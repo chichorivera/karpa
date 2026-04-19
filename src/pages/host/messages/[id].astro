@@ -1,0 +1,106 @@
+---
+import HostLayout from '../../../layouts/HostLayout.astro'
+import { getSessionUser, supabaseAdmin } from '../../../lib/supabase'
+
+const { user, profile } = await getSessionUser(Astro.cookies)
+if (!user || profile?.role !== 'host') return Astro.redirect('/auth/login')
+
+const { id: convId } = Astro.params
+
+const { data: conv } = await supabaseAdmin
+  .from('conversations')
+  .select(`id, campings(id, name, city, slug), profiles!traveler_id(id, full_name)`)
+  .eq('id', convId!)
+  .eq('host_id', user.id)
+  .single()
+
+if (!conv) return Astro.redirect('/host/messages')
+
+let sendError = ''
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData()
+  const body = form.get('body')?.toString().trim() ?? ''
+  if (body) {
+    const { error } = await supabaseAdmin.from('messages').insert({
+      conversation_id: convId, sender_id: user.id, body,
+    })
+    if (error) sendError = 'No se pudo enviar el mensaje.'
+  }
+  return Astro.redirect(`/host/messages/${convId}`)
+}
+
+const { data: messages } = await supabaseAdmin
+  .from('messages')
+  .select('id, body, sender_id, created_at')
+  .eq('conversation_id', convId!)
+  .order('created_at')
+
+const camping  = (conv as any).campings
+const traveler = (conv as any).profiles
+---
+
+<HostLayout title={`Chat — ${traveler?.full_name ?? 'Viajero'}`} active="/host/messages">
+  <div class="max-w-2xl mx-auto flex flex-col" style="height: calc(100vh - 120px)">
+    <!-- Header -->
+    <div class="flex items-center gap-3 pb-4 mb-4 border-b" style="border-color:#e8ddd4">
+      <a href="/host/messages" class="p-1.5 rounded-lg hover:bg-gray-100 transition">
+        <svg class="w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
+      <div class="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm"
+           style="background-color:#2E593F">
+        {(traveler?.full_name ?? 'V')[0].toUpperCase()}
+      </div>
+      <div>
+        <p class="font-semibold text-sm text-gray-900">{traveler?.full_name ?? 'Viajero'}</p>
+        <p class="text-xs text-gray-400">
+          {camping?.name}{camping?.city ? ` · ${camping.city}` : ''}
+        </p>
+      </div>
+    </div>
+
+    {sendError && <div class="mb-3 px-4 py-2 rounded-xl text-sm bg-red-50 text-red-600">{sendError}</div>}
+
+    <!-- Messages -->
+    <div id="msg-list" class="flex-1 overflow-y-auto space-y-3 mb-4 pr-1">
+      {!messages?.length && (
+        <p class="text-center text-xs text-gray-400 py-8">El viajero aún no ha escrito. Puedes responder cuando llegue su mensaje.</p>
+      )}
+      {messages?.map((m: any) => {
+        const mine = m.sender_id === user.id
+        return (
+          <div class={`flex ${mine ? 'justify-end' : 'justify-start'}`}>
+            <div class={`max-w-xs sm:max-w-sm px-4 py-2.5 rounded-2xl text-sm ${mine ? 'rounded-br-sm text-white' : 'rounded-bl-sm text-gray-800 bg-white border'}`}
+                 style={mine ? 'background-color:#2E593F' : 'border-color:#e8ddd4'}>
+              <p class="leading-relaxed">{m.body}</p>
+              <p class={`text-xs mt-1 ${mine ? 'text-white/60' : 'text-gray-400'}`}>
+                {new Date(m.created_at).toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit' })}
+              </p>
+            </div>
+          </div>
+        )
+      })}
+    </div>
+
+    <!-- Input -->
+    <form method="POST" class="flex gap-2 items-end">
+      <textarea name="body" rows="2" required
+        placeholder="Escribe tu respuesta..."
+        class="flex-1 px-4 py-3 rounded-2xl border text-sm outline-none resize-none placeholder:text-gray-400"
+        style="border-color:#D9C3A5"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();this.form.submit()}"
+      ></textarea>
+      <button type="submit"
+        class="px-4 py-3 rounded-2xl text-white font-semibold text-sm hover:opacity-90 transition shrink-0"
+        style="background-color:#2E593F">
+        Enviar
+      </button>
+    </form>
+  </div>
+</HostLayout>
+
+<script>
+  const list = document.getElementById('msg-list')
+  if (list) list.scrollTop = list.scrollHeight
+</script>

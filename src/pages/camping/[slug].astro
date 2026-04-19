@@ -2,14 +2,15 @@
 import PublicLayout from '../../layouts/PublicLayout.astro'
 import Navbar from '../../components/layout/Navbar.astro'
 import Footer from '../../components/layout/Footer.astro'
-import { supabase } from '../../lib/supabase'
+import { supabase, getSessionUser } from '../../lib/supabase'
 
 const { slug } = Astro.params
+const { user, profile } = await getSessionUser(Astro.cookies)
 
 const { data: camping } = await supabase
   .from('campings')
   .select(`
-    id, name, slug, description, address, city, country, lat, lng, rules,
+    id, name, slug, description, address, city, country, lat, lng, rules, owner_id,
     camping_images(id, url, is_cover, "order"),
     units(id, name, type, capacity, price_per_night, amenities, description, status),
     reviews(id, rating, comment, created_at, profiles!traveler_id(full_name))
@@ -29,7 +30,7 @@ const avgRating = reviews.length
   : null
 
 const unitTypeLabel: Record<string, string> = {
-  tent: 'Carpa', cabin: 'Cabaña', glamping: 'Glamping', camper: 'Camper', other: 'Otro',
+  tent: 'Sitio', cabin: 'Cabaña', glamping: 'Glamping', camper: 'Camper', other: 'Otro',
 }
 ---
 
@@ -167,8 +168,8 @@ const unitTypeLabel: Record<string, string> = {
 
         <!-- Unidades disponibles -->
         <div>
-          <h2 class="text-lg font-bold text-gray-900 mb-4" style="font-family:'Playfair Display',serif">
-            Parcelas y alojamientos
+          <h2 class="text-lg font-bold text-gray-900 mb-4" id="unidades" style="font-family:'Playfair Display',serif">
+            Alojamientos disponibles
           </h2>
           {units.length === 0 ? (
             <p class="text-gray-400 text-sm">No hay unidades disponibles por el momento.</p>
@@ -207,12 +208,33 @@ const unitTypeLabel: Record<string, string> = {
                   <a href={`/app/booking/new?unit=${u.id}&camping=${camping.id}`}
                      class="block w-full text-center py-2.5 rounded-xl text-sm font-semibold text-white hover:opacity-90 transition"
                      style="background-color:#6D4C3D">
-                    Reservar esta parcela
+                    Reservar
                   </a>
                 </div>
               ))}
             </div>
           )}
+        </div>
+
+        <!-- Mobile contact button -->
+        <div class="lg:hidden">
+          {profile?.role === 'traveler' ? (
+            <form method="POST" action="/api/conversations/new">
+              <input type="hidden" name="campingId" value={camping.id} />
+              <input type="hidden" name="hostId" value={(camping as any).owner_id} />
+              <button type="submit"
+                class="w-full py-3 rounded-xl text-sm font-semibold border transition hover:bg-gray-50"
+                style="border-color:#D9C3A5;color:#6D4C3D">
+                Contactar al host
+              </button>
+            </form>
+          ) : !user ? (
+            <a href={`/auth/login?redirect=/camping/${slug}`}
+               class="block w-full py-3 rounded-xl text-sm font-semibold border transition hover:bg-gray-50 text-center"
+               style="border-color:#D9C3A5;color:#6D4C3D">
+              Iniciar sesión para contactar
+            </a>
+          ) : null}
         </div>
 
         <!-- Reglas -->
@@ -281,8 +303,26 @@ const unitTypeLabel: Record<string, string> = {
               <a href="#unidades"
                  class="block w-full py-3 rounded-xl text-white text-sm font-semibold hover:opacity-90 transition"
                  style="background-color:#6D4C3D">
-                Ver parcelas disponibles
+                Ver alojamientos disponibles
               </a>
+              {/* Contact host button */}
+              {profile?.role === 'traveler' ? (
+                <form method="POST" action="/api/conversations/new">
+                  <input type="hidden" name="campingId" value={camping.id} />
+                  <input type="hidden" name="hostId" value={(camping as any).owner_id} />
+                  <button type="submit"
+                    class="mt-2 block w-full py-3 rounded-xl text-sm font-semibold border transition hover:bg-gray-50"
+                    style="border-color:#D9C3A5;color:#6D4C3D">
+                    Contactar al host
+                  </button>
+                </form>
+              ) : !user ? (
+                <a href={`/auth/login?redirect=/camping/${slug}`}
+                   class="mt-2 block w-full py-3 rounded-xl text-sm font-semibold border transition hover:bg-gray-50 text-center"
+                   style="border-color:#D9C3A5;color:#6D4C3D">
+                  Iniciar sesión para contactar
+                </a>
+              ) : null}
             </div>
           )}
         </div>

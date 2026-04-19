@@ -17,6 +17,9 @@ if (Astro.request.method === 'POST') {
   if (e) error = 'Error al guardar.'
   else success = true
 }
+
+const avatarUrl = profile?.avatar_url ?? null
+const initials  = (profile?.full_name ?? user.email ?? 'H')[0].toUpperCase()
 ---
 
 <HostLayout title="Mi Perfil" active="/host/profile">
@@ -26,12 +29,26 @@ if (Astro.request.method === 'POST') {
 
     <div class="bg-white border rounded-2xl p-6" style="border-color:#e8ddd4">
       <div class="flex items-center gap-4 mb-6 pb-6 border-b" style="border-color:#e8ddd4">
-        <div class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold text-white" style="background-color:#2E593F">
-          {(profile?.full_name ?? user.email ?? 'H')[0].toUpperCase()}
-        </div>
+        <button type="button" id="avatar-btn" class="relative group shrink-0" title="Cambiar foto">
+          {avatarUrl ? (
+            <img id="avatar-preview" src={avatarUrl} alt="avatar"
+                 class="w-16 h-16 rounded-full object-cover border-2" style="border-color:#D9C3A5" />
+          ) : (
+            <div id="avatar-preview" class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold text-white"
+                 style="background-color:#2E593F">{initials}</div>
+          )}
+          <div class="absolute inset-0 rounded-full bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+        </button>
+        <input id="avatar-file" type="file" accept="image/*" class="hidden" />
         <div>
           <p class="font-semibold text-gray-900">{profile?.full_name ?? '(sin nombre)'}</p>
           <p class="text-sm text-gray-400">{user.email}</p>
+          <button type="button" id="avatar-btn2" class="text-xs mt-1 hover:underline" style="color:#2E593F">Cambiar foto de perfil</button>
         </div>
       </div>
       <form method="POST" class="space-y-4">
@@ -58,4 +75,170 @@ if (Astro.request.method === 'POST') {
       </form>
     </div>
   </div>
+
+  <!-- Crop modal -->
+  <div id="crop-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4" style="background:rgba(0,0,0,0.7)">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden">
+      <div class="px-5 py-4 border-b flex items-center justify-between" style="border-color:#e8ddd4">
+        <h3 class="font-semibold text-gray-900 text-sm">Recortar foto de perfil</h3>
+        <button id="crop-cancel-top" class="p-1 rounded-lg hover:bg-gray-100">
+          <svg class="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="p-4">
+        <p class="text-xs text-gray-400 mb-3 text-center">Arrastra la imagen para ajustar el recorte cuadrado</p>
+        <div id="crop-container" class="relative mx-auto overflow-hidden rounded-xl" style="width:280px;height:280px;background:#000;cursor:move">
+          <img id="crop-img" src="" alt="" class="absolute select-none" draggable="false"
+               style="transform-origin:top left;user-select:none;-webkit-user-drag:none" />
+          <div class="absolute inset-0 pointer-events-none">
+            <div id="crop-overlay" class="absolute rounded-lg" style="border:2px solid white;box-shadow:0 0 0 9999px rgba(0,0,0,0.5);width:240px;height:240px;top:20px;left:20px"></div>
+          </div>
+        </div>
+        <canvas id="crop-canvas" class="hidden"></canvas>
+        <div id="crop-error" class="text-xs text-red-500 mt-2 text-center hidden"></div>
+        <div class="flex gap-3 mt-4">
+          <button id="crop-cancel" type="button"
+            class="flex-1 py-2.5 rounded-xl border text-sm font-semibold text-gray-600 hover:bg-gray-50 transition"
+            style="border-color:#D9C3A5">
+            Cancelar
+          </button>
+          <button id="crop-confirm" type="button"
+            class="flex-1 py-2.5 rounded-xl text-white text-sm font-semibold hover:opacity-90 transition"
+            style="background-color:#2E593F">
+            Confirmar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </HostLayout>
+
+<script>
+  const fileInput     = document.getElementById('avatar-file') as HTMLInputElement
+  const avatarBtn     = document.getElementById('avatar-btn')!
+  const avatarBtn2    = document.getElementById('avatar-btn2')!
+  const cropModal     = document.getElementById('crop-modal')!
+  const cropImg       = document.getElementById('crop-img') as HTMLImageElement
+  const cropContainer = document.getElementById('crop-container')!
+  const cropCanvas    = document.getElementById('crop-canvas') as HTMLCanvasElement
+  const cropConfirm   = document.getElementById('crop-confirm')!
+  const cropCancel    = document.getElementById('crop-cancel')!
+  const cropCancelTop = document.getElementById('crop-cancel-top')!
+  const cropError     = document.getElementById('crop-error')!
+
+  const CONTAINER    = 280
+  const SQUARE       = 240
+  const SQUARE_OFFSET = 20
+
+  let imgOffsetX = 0, imgOffsetY = 0, imgScale = 1
+  let dragStartX = 0, dragStartY = 0, isDragging = false
+
+  function openFile() { fileInput.click() }
+  avatarBtn.addEventListener('click', openFile)
+  avatarBtn2.addEventListener('click', openFile)
+
+  fileInput.addEventListener('change', () => {
+    const file = fileInput.files?.[0]
+    if (!file) return
+    const url = URL.createObjectURL(file)
+    cropImg.onload = () => {
+      const nw = cropImg.naturalWidth, nh = cropImg.naturalHeight
+      imgScale = nw < nh ? CONTAINER / nw : CONTAINER / nh
+      const w  = nw * imgScale, h = nh * imgScale
+      imgOffsetX = (CONTAINER - w) / 2
+      imgOffsetY = (CONTAINER - h) / 2
+      applyTransform(w, h)
+      cropModal.classList.remove('hidden')
+      cropModal.classList.add('flex')
+    }
+    cropImg.src = url
+  })
+
+  function applyTransform(w?: number, h?: number) {
+    const ww = w ?? cropImg.naturalWidth  * imgScale
+    const hh = h ?? cropImg.naturalHeight * imgScale
+    cropImg.style.width  = ww + 'px'
+    cropImg.style.height = hh + 'px'
+    cropImg.style.left   = imgOffsetX + 'px'
+    cropImg.style.top    = imgOffsetY + 'px'
+  }
+
+  cropContainer.addEventListener('mousedown', startDrag)
+  cropContainer.addEventListener('touchstart', startDrag, { passive: true })
+  window.addEventListener('mousemove', onDrag)
+  window.addEventListener('touchmove', onDrag, { passive: false })
+  window.addEventListener('mouseup', stopDrag)
+  window.addEventListener('touchend', stopDrag)
+
+  function startDrag(e: MouseEvent | TouchEvent) {
+    isDragging = true
+    const pt = 'touches' in e ? e.touches[0] : e
+    dragStartX = pt.clientX - imgOffsetX
+    dragStartY = pt.clientY - imgOffsetY
+  }
+
+  function onDrag(e: MouseEvent | TouchEvent) {
+    if (!isDragging) return
+    if ('touches' in e) e.preventDefault()
+    const pt = 'touches' in e ? e.touches[0] : e
+    const w  = cropImg.naturalWidth  * imgScale
+    const h  = cropImg.naturalHeight * imgScale
+    imgOffsetX = pt.clientX - dragStartX
+    imgOffsetY = pt.clientY - dragStartY
+    imgOffsetX = Math.max(SQUARE_OFFSET + SQUARE - w, Math.min(SQUARE_OFFSET, imgOffsetX))
+    imgOffsetY = Math.max(SQUARE_OFFSET + SQUARE - h, Math.min(SQUARE_OFFSET, imgOffsetY))
+    applyTransform()
+  }
+
+  function stopDrag() { isDragging = false }
+
+  function closeCrop() {
+    cropModal.classList.add('hidden')
+    cropModal.classList.remove('flex')
+    cropError.classList.add('hidden')
+    fileInput.value = ''
+  }
+  cropCancel.addEventListener('click', closeCrop)
+  cropCancelTop.addEventListener('click', closeCrop)
+
+  cropConfirm.addEventListener('click', async () => {
+    cropConfirm.textContent = 'Subiendo...'
+    cropConfirm.setAttribute('disabled', 'true')
+    try {
+      const OUTPUT = 400
+      cropCanvas.width = OUTPUT; cropCanvas.height = OUTPUT
+      const ctx = cropCanvas.getContext('2d')!
+      const srcX = (SQUARE_OFFSET - imgOffsetX) / imgScale
+      const srcY = (SQUARE_OFFSET - imgOffsetY) / imgScale
+      const srcS = SQUARE / imgScale
+      ctx.drawImage(cropImg, srcX, srcY, srcS, srcS, 0, 0, OUTPUT, OUTPUT)
+      const blob = await new Promise<Blob>((res) =>
+        cropCanvas.toBlob(b => res(b!), 'image/jpeg', 0.92)
+      )
+      const fd = new FormData()
+      fd.append('avatar', blob, 'avatar.jpg')
+      const resp = await fetch('/api/profile/avatar', { method: 'POST', body: fd })
+      const json = await resp.json()
+      if (!resp.ok) throw new Error(json.error ?? 'Error')
+      const preview = document.getElementById('avatar-preview')
+      if (preview instanceof HTMLImageElement) {
+        preview.src = json.url
+      } else {
+        const img = document.createElement('img')
+        img.src = json.url; img.id = 'avatar-preview'; img.alt = 'avatar'
+        img.className = 'w-16 h-16 rounded-full object-cover border-2'
+        img.style.borderColor = '#D9C3A5'
+        preview?.parentNode?.replaceChild(img, preview)
+      }
+      closeCrop()
+    } catch (err: any) {
+      cropError.textContent = err.message ?? 'Error al subir la foto.'
+      cropError.classList.remove('hidden')
+    } finally {
+      cropConfirm.textContent = 'Confirmar'
+      cropConfirm.removeAttribute('disabled')
+    }
+  })
+</script>

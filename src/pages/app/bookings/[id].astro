@@ -73,7 +73,7 @@ const statusLabel: Record<string, string> = {
         </span>
       </div>
       <div class="space-y-2 text-sm">
-        <div class="flex justify-between"><span class="text-gray-500">Parcela</span><span class="font-medium">{b.units?.name}</span></div>
+        <div class="flex justify-between"><span class="text-gray-500">Alojamiento</span><span class="font-medium">{b.units?.name}</span></div>
         <div class="flex justify-between"><span class="text-gray-500">Check-in</span><span class="font-medium">{new Date(b.check_in).toLocaleDateString('es-CL', { dateStyle: 'long' })}</span></div>
         <div class="flex justify-between"><span class="text-gray-500">Check-out</span><span class="font-medium">{new Date(b.check_out).toLocaleDateString('es-CL', { dateStyle: 'long' })}</span></div>
         <div class="flex justify-between"><span class="text-gray-500">Noches</span><span class="font-medium">{nights}</span></div>

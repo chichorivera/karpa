@@ -1,0 +1,72 @@
+---
+import TravelerLayout from '../../../layouts/TravelerLayout.astro'
+import { getSessionUser, supabaseAdmin } from '../../../lib/supabase'
+
+const { user, profile } = await getSessionUser(Astro.cookies)
+if (!user || profile?.role !== 'traveler') return Astro.redirect('/auth/login')
+
+const { data: conversations } = await supabaseAdmin
+  .from('conversations')
+  .select(`
+    id, updated_at,
+    campings(id, name, city),
+    profiles!host_id(id, full_name)
+  `)
+  .eq('traveler_id', user.id)
+  .order('updated_at', { ascending: false })
+
+// Get last message per conversation
+const convIds = (conversations ?? []).map((c: any) => c.id)
+const { data: lastMsgs } = convIds.length
+  ? await supabaseAdmin
+      .from('messages')
+      .select('conversation_id, body, created_at, sender_id')
+      .in('conversation_id', convIds)
+      .order('created_at', { ascending: false })
+  : { data: [] }
+
+const lastMsgMap: Record<string, any> = {}
+for (const m of lastMsgs ?? []) {
+  if (!lastMsgMap[m.conversation_id]) lastMsgMap[m.conversation_id] = m
+}
+---
+
+<TravelerLayout title="Mensajes" active="/app/messages">
+  <div class="max-w-2xl mx-auto">
+    {!conversations?.length ? (
+      <div class="text-center py-16">
+        <p class="text-4xl mb-4">💬</p>
+        <p class="text-gray-500 text-sm">No tienes conversaciones aún.</p>
+        <a href="/search" class="mt-4 inline-block text-sm font-semibold hover:underline" style="color:#6D4C3D">
+          Explorar campings →
+        </a>
+      </div>
+    ) : (
+      <div class="space-y-2">
+        {conversations.map((c: any) => {
+          const last = lastMsgMap[c.id]
+          return (
+            <a href={`/app/messages/${c.id}`}
+               class="flex items-center gap-4 bg-white border rounded-2xl px-5 py-4 hover:shadow-md transition-shadow"
+               style="border-color:#e8ddd4">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0"
+                   style="background-color:#6D4C3D">
+                {(c.profiles?.full_name ?? 'H')[0].toUpperCase()}
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="font-semibold text-sm text-gray-900 truncate">{c.campings?.name ?? 'Camping'}</p>
+                <p class="text-xs text-gray-400 truncate">Host: {c.profiles?.full_name}</p>
+                {last && <p class="text-xs text-gray-500 mt-0.5 truncate">{last.body}</p>}
+              </div>
+              {last && (
+                <p class="text-xs text-gray-300 shrink-0">
+                  {new Date(last.created_at).toLocaleDateString('es-CL', { day: 'numeric', month: 'short' })}
+                </p>
+              )}
+            </a>
+          )
+        })}
+      </div>
+    )}
+  </div>
+</TravelerLayout>

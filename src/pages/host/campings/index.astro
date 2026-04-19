@@ -43,13 +43,16 @@ const statusColor: Record<string, string> = { draft: '#D9C3A5', active: '#2E593F
                 </span>
               </div>
               {c.city && <p class="text-xs text-gray-400 mb-4">{c.city}</p>}
-              <div class="flex gap-2">
+              <div class="flex gap-2 flex-wrap">
                 <a href={`/host/campings/${c.id}`}
                    class="flex-1 text-center py-2 rounded-xl text-xs font-semibold hover:opacity-80 transition"
                    style="background-color:#F4E8D4;color:#6D4C3D">Editar</a>
                 <a href={`/host/campings/${c.id}/units`}
                    class="flex-1 text-center py-2 rounded-xl text-xs font-semibold hover:opacity-80 transition"
-                   style="background-color:#e8f3ec;color:#2E593F">Parcelas</a>
+                   style="background-color:#e8f3ec;color:#2E593F">Unidades</a>
+                <a href={`/host/campings/${c.id}/pricing`}
+                   class="flex-1 text-center py-2 rounded-xl text-xs font-semibold hover:opacity-80 transition"
+                   style="background-color:#fef0e6;color:#F27C38">Precios</a>
               </div>
             </div>
           </div>

@@ -7,6 +7,7 @@ const { title, active = '' } = Astro.props
 const nav = [
   { href: '/app/dashboard', label: 'Dashboard' },
   { href: '/app/bookings',  label: 'Mis Reservas' },
+  { href: '/app/messages',  label: 'Mensajes' },
   { href: '/app/profile',   label: 'Mi Perfil' },
 ]
 ---
@@ -76,9 +77,26 @@ const nav = [
           </div>
           <nav class="flex-1 px-3 py-6 space-y-1">
             {nav.map(item => (
-              <a href={item.href} class="flex items-center px-3 py-2.5 rounded-xl text-sm font-medium text-gray-600 hover:bg-[#F4E8D4]">{item.label}</a>
+              <a href={item.href}
+                 class={`flex items-center px-3 py-2.5 rounded-xl text-sm font-medium transition ${active === item.href ? 'text-white' : 'text-gray-600 hover:bg-[#F4E8D4]'}`}
+                 style={active === item.href ? 'background-color:#6D4C3D' : ''}>
+                {item.label}
+              </a>
             ))}
           </nav>
+          <div class="px-3 py-4 border-t" style="border-color:#e8ddd4">
+            <a href="/search" class="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-500 hover:bg-[#F4E8D4] transition w-full mb-1">
+              🔍 Buscar campings
+            </a>
+            <form action="/api/auth/logout" method="POST">
+              <button class="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-500 hover:bg-red-50 hover:text-red-600 transition w-full">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                Cerrar sesión
+              </button>
+            </form>
+          </div>
         </aside>
       </div>
 
