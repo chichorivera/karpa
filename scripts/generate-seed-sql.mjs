@@ -179,7 +179,7 @@ for (const u of USERS) {
   lines.push(`  ${jq({ provider: 'email', providers: ['email'] })},`)
   lines.push(`  ${jq({ full_name: u.full_name })},`)
   lines.push(`  false, false`)
-  lines.push(`) ON CONFLICT (email) DO NOTHING;`)
+  lines.push(`) ON CONFLICT (id) DO NOTHING;`)
   lines.push(``)
   lines.push(`INSERT INTO auth.identities (id, provider_id, user_id, identity_data, provider, last_sign_in_at, created_at, updated_at)`)
   lines.push(`VALUES (`)

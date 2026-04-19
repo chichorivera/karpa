@@ -26,7 +26,7 @@ INSERT INTO auth.users (
   '{"provider":"email","providers":["email"]}',
   '{"full_name":"Administrador Karpa"}',
   false, false
-) ON CONFLICT (email) DO NOTHING;
+) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO auth.identities (id, provider_id, user_id, identity_data, provider, last_sign_in_at, created_at, updated_at)
 VALUES (
@@ -50,7 +50,7 @@ INSERT INTO auth.users (
   '{"provider":"email","providers":["email"]}',
   '{"full_name":"Carlos Mendoza"}',
   false, false
-) ON CONFLICT (email) DO NOTHING;
+) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO auth.identities (id, provider_id, user_id, identity_data, provider, last_sign_in_at, created_at, updated_at)
 VALUES (
@@ -74,7 +74,7 @@ INSERT INTO auth.users (
   '{"provider":"email","providers":["email"]}',
   '{"full_name":"María González"}',
   false, false
-) ON CONFLICT (email) DO NOTHING;
+) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO auth.identities (id, provider_id, user_id, identity_data, provider, last_sign_in_at, created_at, updated_at)
 VALUES (
@@ -98,7 +98,7 @@ INSERT INTO auth.users (
   '{"provider":"email","providers":["email"]}',
   '{"full_name":"Pedro Rojas"}',
   false, false
-) ON CONFLICT (email) DO NOTHING;
+) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO auth.identities (id, provider_id, user_id, identity_data, provider, last_sign_in_at, created_at, updated_at)
 VALUES (
@@ -122,7 +122,7 @@ INSERT INTO auth.users (
   '{"provider":"email","providers":["email"]}',
   '{"full_name":"Ana Martínez"}',
   false, false
-) ON CONFLICT (email) DO NOTHING;
+) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO auth.identities (id, provider_id, user_id, identity_data, provider, last_sign_in_at, created_at, updated_at)
 VALUES (
@@ -146,7 +146,7 @@ INSERT INTO auth.users (
   '{"provider":"email","providers":["email"]}',
   '{"full_name":"Luis Fernández"}',
   false, false
-) ON CONFLICT (email) DO NOTHING;
+) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO auth.identities (id, provider_id, user_id, identity_data, provider, last_sign_in_at, created_at, updated_at)
 VALUES (
@@ -170,7 +170,7 @@ INSERT INTO auth.users (
   '{"provider":"email","providers":["email"]}',
   '{"full_name":"Carmen López"}',
   false, false
-) ON CONFLICT (email) DO NOTHING;
+) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO auth.identities (id, provider_id, user_id, identity_data, provider, last_sign_in_at, created_at, updated_at)
 VALUES (
@@ -194,7 +194,7 @@ INSERT INTO auth.users (
   '{"provider":"email","providers":["email"]}',
   '{"full_name":"Jorge Sánchez"}',
   false, false
-) ON CONFLICT (email) DO NOTHING;
+) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO auth.identities (id, provider_id, user_id, identity_data, provider, last_sign_in_at, created_at, updated_at)
 VALUES (
@@ -218,7 +218,7 @@ INSERT INTO auth.users (
   '{"provider":"email","providers":["email"]}',
   '{"full_name":"Valentina Torres"}',
   false, false
-) ON CONFLICT (email) DO NOTHING;
+) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO auth.identities (id, provider_id, user_id, identity_data, provider, last_sign_in_at, created_at, updated_at)
 VALUES (
@@ -242,7 +242,7 @@ INSERT INTO auth.users (
   '{"provider":"email","providers":["email"]}',
   '{"full_name":"Roberto Díaz"}',
   false, false
-) ON CONFLICT (email) DO NOTHING;
+) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO auth.identities (id, provider_id, user_id, identity_data, provider, last_sign_in_at, created_at, updated_at)
 VALUES (
@@ -266,7 +266,7 @@ INSERT INTO auth.users (
   '{"provider":"email","providers":["email"]}',
   '{"full_name":"Sofía Muñoz"}',
   false, false
-) ON CONFLICT (email) DO NOTHING;
+) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO auth.identities (id, provider_id, user_id, identity_data, provider, last_sign_in_at, created_at, updated_at)
 VALUES (
@@ -290,7 +290,7 @@ INSERT INTO auth.users (
   '{"provider":"email","providers":["email"]}',
   '{"full_name":"Juan Pérez"}',
   false, false
-) ON CONFLICT (email) DO NOTHING;
+) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO auth.identities (id, provider_id, user_id, identity_data, provider, last_sign_in_at, created_at, updated_at)
 VALUES (
@@ -314,7 +314,7 @@ INSERT INTO auth.users (
   '{"provider":"email","providers":["email"]}',
   '{"full_name":"Claudia Ramos"}',
   false, false
-) ON CONFLICT (email) DO NOTHING;
+) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO auth.identities (id, provider_id, user_id, identity_data, provider, last_sign_in_at, created_at, updated_at)
 VALUES (
@@ -338,7 +338,7 @@ INSERT INTO auth.users (
   '{"provider":"email","providers":["email"]}',
   '{"full_name":"Matías Herrera"}',
   false, false
-) ON CONFLICT (email) DO NOTHING;
+) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO auth.identities (id, provider_id, user_id, identity_data, provider, last_sign_in_at, created_at, updated_at)
 VALUES (
