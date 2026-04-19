@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  /* Primarios */
+  --color-madera: #6D4C3D;
+  --color-bosque: #2E593F;
+  --color-atardecer: #F27C38;
+
+  /* Secundarios */
+  --color-arena: #F4E8D4;
+  --color-crema: #D9C3A5;
+
+  /* Tipografía */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-body);
+    color: #1a1a1a;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+  }
+}
