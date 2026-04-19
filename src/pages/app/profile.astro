@@ -90,13 +90,20 @@ const initials  = (profile?.full_name ?? user.email ?? 'U')[0].toUpperCase()
         </button>
       </div>
       <div class="p-4 flex flex-col items-center">
-        <p class="text-xs text-gray-400 mb-3">Arrastra para reposicionar</p>
-        <!-- Canvas preview — immune to CSS distortion -->
+        <p class="text-xs text-gray-400 mb-3">Arrastra para mover · pellizca o usa el slider para hacer zoom</p>
         <canvas id="crop-preview" width="280" height="280"
                 style="display:block;width:280px;height:280px;border-radius:0.75rem;cursor:move;touch-action:none"></canvas>
-        <!-- Hidden canvas for output -->
+        <!-- Zoom slider -->
+        <div class="flex items-center gap-2 mt-3 w-full" style="max-width:280px">
+          <svg class="w-4 h-4 shrink-0 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+          </svg>
+          <input id="zoom-slider" type="range" min="0" max="100" value="0" class="flex-1 accent-[#6D4C3D]" style="cursor:pointer" />
+          <svg class="w-5 h-5 shrink-0 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 10h-6" />
+          </svg>
+        </div>
         <canvas id="crop-output" width="400" height="400" style="display:none"></canvas>
-        <!-- Hidden img as source for canvas drawing -->
         <img id="crop-src" style="display:none" alt="" />
         <div id="crop-error" class="text-xs text-red-500 mt-2 text-center hidden"></div>
         <div class="flex gap-3 mt-4 w-full">
@@ -113,13 +120,15 @@ const initials  = (profile?.full_name ?? user.email ?? 'U')[0].toUpperCase()
 </TravelerLayout>
 
 <script>
-  const C = 280, SQ = 240, OFF = 20   // container, square, offset
+  const C = 280, SQ = 240, OFF = 20
+  const CROP_CX = OFF + SQ / 2, CROP_CY = OFF + SQ / 2   // crop center = 140,140
 
   const fileInput  = document.getElementById('avatar-file')  as HTMLInputElement
   const modal      = document.getElementById('crop-modal')!
   const preview    = document.getElementById('crop-preview')  as HTMLCanvasElement
   const output     = document.getElementById('crop-output')   as HTMLCanvasElement
   const srcImg     = document.getElementById('crop-src')      as HTMLImageElement
+  const slider     = document.getElementById('zoom-slider')   as HTMLInputElement
   const confirmBtn = document.getElementById('crop-confirm')!
   const cancelBtn  = document.getElementById('crop-cancel')!
   const closeBtn   = document.getElementById('crop-close')!
@@ -127,51 +136,71 @@ const initials  = (profile?.full_name ?? user.email ?? 'U')[0].toUpperCase()
   const pCtx       = preview.getContext('2d')!
   const oCtx       = output.getContext('2d')!
 
-  let ox = 0, oy = 0, scale = 1, dragging = false, dx = 0, dy = 0
+  let ox = 0, oy = 0, scale = 1
+  let minScale = 1, maxScale = 4
+  let dragging = false, dx = 0, dy = 0
+  let pinchDist = 0, pinchScale = 1
 
-  // Open file picker
   document.getElementById('avatar-btn')!.addEventListener('click',  () => fileInput.click())
   document.getElementById('avatar-btn2')!.addEventListener('click', () => fileInput.click())
 
   fileInput.addEventListener('change', () => {
     const file = fileInput.files?.[0]
     if (!file) return
-    const url = URL.createObjectURL(file)
     srcImg.onload = () => {
       const nw = srcImg.naturalWidth, nh = srcImg.naturalHeight
-      // Cover: scale so the shorter side fills the container
-      scale = nw < nh ? C / nw : C / nh
+      // minScale: image just covers the crop square
+      minScale = Math.max(SQ / nw, SQ / nh)
+      maxScale = minScale * 5
+      // Start with cover scale (fills whole container)
+      scale = Math.max(C / nw, C / nh)
       const w = nw * scale, h = nh * scale
       ox = (C - w) / 2
       oy = (C - h) / 2
+      clamp()
+      syncSlider()
       draw()
       modal.style.display = 'flex'
     }
-    srcImg.src = url
+    srcImg.src = URL.createObjectURL(file)
   })
+
+  function applyZoom(newScale: number, pivotX = CROP_CX, pivotY = CROP_CY) {
+    newScale = Math.max(minScale, Math.min(maxScale, newScale))
+    // Zoom relative to pivot point so that point stays fixed on the image
+    ox = pivotX - ((pivotX - ox) / scale) * newScale
+    oy = pivotY - ((pivotY - oy) / scale) * newScale
+    scale = newScale
+    clamp()
+    syncSlider()
+    draw()
+  }
+
+  function syncSlider() {
+    // Map scale logarithmically to slider 0-100
+    const t = Math.log(scale / minScale) / Math.log(maxScale / minScale)
+    slider.value = String(Math.round(Math.max(0, Math.min(1, t)) * 100))
+  }
 
   function draw() {
     const w = srcImg.naturalWidth * scale, h = srcImg.naturalHeight * scale
     pCtx.clearRect(0, 0, C, C)
     pCtx.drawImage(srcImg, ox, oy, w, h)
-    // Dim everything outside the square
     pCtx.fillStyle = 'rgba(0,0,0,0.55)'
-    pCtx.fillRect(0,        0,        C,   OFF)           // top
-    pCtx.fillRect(0,        OFF + SQ,  C,   OFF)           // bottom
-    pCtx.fillRect(0,        OFF,       OFF,  SQ)            // left
-    pCtx.fillRect(OFF + SQ, OFF,       OFF,  SQ)            // right
-    // Square border
+    pCtx.fillRect(0,        0,        C,   OFF)
+    pCtx.fillRect(0,        OFF + SQ,  C,   OFF)
+    pCtx.fillRect(0,        OFF,       OFF,  SQ)
+    pCtx.fillRect(OFF + SQ, OFF,       OFF,  SQ)
     pCtx.strokeStyle = 'rgba(255,255,255,0.85)'
     pCtx.lineWidth = 2
     pCtx.strokeRect(OFF + 1, OFF + 1, SQ - 2, SQ - 2)
-    // Corner marks
     pCtx.strokeStyle = 'white'
     pCtx.lineWidth = 3
     const cs = 14
-    for (const [cx, cy] of [[OFF, OFF], [OFF+SQ, OFF], [OFF, OFF+SQ], [OFF+SQ, OFF+SQ]] as [number,number][]) {
+    for (const [cx, cy] of [[OFF,OFF],[OFF+SQ,OFF],[OFF,OFF+SQ],[OFF+SQ,OFF+SQ]] as [number,number][]) {
       const sx = cx === OFF ? 1 : -1, sy = cy === OFF ? 1 : -1
       pCtx.beginPath()
-      pCtx.moveTo(cx + sx * cs, cy); pCtx.lineTo(cx, cy); pCtx.lineTo(cx, cy + sy * cs)
+      pCtx.moveTo(cx + sx*cs, cy); pCtx.lineTo(cx, cy); pCtx.lineTo(cx, cy + sy*cs)
       pCtx.stroke()
     }
   }
@@ -182,21 +211,62 @@ const initials  = (profile?.full_name ?? user.email ?? 'U')[0].toUpperCase()
     oy = Math.max(OFF + SQ - h, Math.min(OFF, oy))
   }
 
-  // Mouse drag
-  preview.addEventListener('mousedown', e => { dragging = true; dx = e.clientX - ox; dy = e.clientY - oy })
-  window.addEventListener('mousemove',  e => { if (!dragging) return; ox = e.clientX - dx; oy = e.clientY - dy; clamp(); draw() })
-  window.addEventListener('mouseup',    () => { dragging = false })
+  // Slider zoom
+  slider.addEventListener('input', () => {
+    const t = Number(slider.value) / 100
+    const newScale = minScale * Math.pow(maxScale / minScale, t)
+    applyZoom(newScale)
+  })
 
-  // Touch drag
+  // Mouse wheel zoom
+  preview.addEventListener('wheel', e => {
+    e.preventDefault()
+    const rect = preview.getBoundingClientRect()
+    const px = (e.clientX - rect.left) * (C / rect.width)
+    const py = (e.clientY - rect.top)  * (C / rect.height)
+    applyZoom(scale * (e.deltaY < 0 ? 1.1 : 0.9), px, py)
+  }, { passive: false })
+
+  // Mouse drag
+  preview.addEventListener('mousedown', e => {
+    dragging = true; dx = e.clientX - ox; dy = e.clientY - oy
+  })
+  window.addEventListener('mousemove', e => {
+    if (!dragging) return
+    ox = e.clientX - dx; oy = e.clientY - dy; clamp(); draw()
+  })
+  window.addEventListener('mouseup', () => { dragging = false })
+
+  // Touch drag + pinch zoom
   preview.addEventListener('touchstart', e => {
-    e.preventDefault(); dragging = true
-    dx = e.touches[0].clientX - ox; dy = e.touches[0].clientY - oy
+    e.preventDefault()
+    if (e.touches.length === 2) {
+      dragging = false
+      pinchDist  = Math.hypot(e.touches[1].clientX - e.touches[0].clientX,
+                              e.touches[1].clientY - e.touches[0].clientY)
+      pinchScale = scale
+    } else {
+      dragging = true
+      dx = e.touches[0].clientX - ox; dy = e.touches[0].clientY - oy
+    }
   }, { passive: false })
+
   window.addEventListener('touchmove', e => {
-    if (!dragging) return; e.preventDefault()
-    ox = e.touches[0].clientX - dx; oy = e.touches[0].clientY - dy; clamp(); draw()
+    if (e.touches.length === 2) {
+      e.preventDefault()
+      const dist = Math.hypot(e.touches[1].clientX - e.touches[0].clientX,
+                              e.touches[1].clientY - e.touches[0].clientY)
+      // Pivot = midpoint between fingers mapped to canvas coords
+      const rect = preview.getBoundingClientRect()
+      const px = ((e.touches[0].clientX + e.touches[1].clientX) / 2 - rect.left) * (C / rect.width)
+      const py = ((e.touches[0].clientY + e.touches[1].clientY) / 2 - rect.top)  * (C / rect.height)
+      applyZoom(pinchScale * (dist / pinchDist), px, py)
+    } else if (dragging) {
+      e.preventDefault()
+      ox = e.touches[0].clientX - dx; oy = e.touches[0].clientY - dy; clamp(); draw()
+    }
   }, { passive: false })
-  window.addEventListener('touchend', () => { dragging = false })
+  window.addEventListener('touchend', e => { if (e.touches.length < 2) { dragging = false } })
 
   function closeCrop() {
     modal.style.display = 'none'
@@ -210,7 +280,6 @@ const initials  = (profile?.full_name ?? user.email ?? 'U')[0].toUpperCase()
     confirmBtn.textContent = 'Subiendo...'
     confirmBtn.setAttribute('disabled', 'true')
     try {
-      // Crop the square region to 400×400
       const srcX = (OFF - ox) / scale, srcY = (OFF - oy) / scale, srcS = SQ / scale
       oCtx.clearRect(0, 0, 400, 400)
       oCtx.drawImage(srcImg, srcX, srcY, srcS, srcS, 0, 0, 400, 400)
@@ -220,7 +289,6 @@ const initials  = (profile?.full_name ?? user.email ?? 'U')[0].toUpperCase()
       const resp = await fetch('/api/profile/avatar', { method: 'POST', body: fd })
       const json = await resp.json()
       if (!resp.ok) throw new Error(json.error ?? 'Error')
-      // Update avatar in page
       const prev = document.getElementById('avatar-preview')
       if (prev instanceof HTMLImageElement) {
         prev.src = json.url
