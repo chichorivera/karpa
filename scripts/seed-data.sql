@@ -422,6 +422,10 @@ INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
 VALUES (v_cid, 'https://picsum.photos/seed/201/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
 VALUES (v_cid, 'https://picsum.photos/seed/202/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/203/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/204/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Orilla del Río 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -434,11 +438,15 @@ VALUES (v_cid, '00000003-0000-4000-8000-000000000000', 'Camping Bosque Nativo Pu
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/203/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/205/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/204/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/206/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/205/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/207/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/208/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/209/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Bosque Nativo 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -451,11 +459,15 @@ VALUES (v_cid, '00000004-0000-4000-8000-000000000000', 'Camping Vista al Volcán
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/206/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/210/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/207/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/211/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/208/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/212/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/213/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/214/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Vista al Volcán 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -468,11 +480,15 @@ VALUES (v_cid, '00000005-0000-4000-8000-000000000000', 'Camping Playa Escondida 
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/209/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/215/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/210/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/216/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/211/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/217/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/218/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/219/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Playa Escondida 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -485,11 +501,15 @@ VALUES (v_cid, '00000006-0000-4000-8000-000000000000', 'Camping Laguna Azul Puer
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/212/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/220/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/213/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/221/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/214/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/222/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/223/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/224/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Laguna Azul 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -502,11 +522,15 @@ VALUES (v_cid, '00000007-0000-4000-8000-000000000000', 'Camping Montaña Viva Sa
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/215/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/225/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/216/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/226/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/217/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/227/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/228/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/229/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Montaña Viva 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -519,11 +543,15 @@ VALUES (v_cid, '00000008-0000-4000-8000-000000000000', 'Camping Valle Verde Vill
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/218/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/230/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/219/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/231/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/220/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/232/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/233/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/234/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Valle Verde 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -536,11 +564,15 @@ VALUES (v_cid, '00000009-0000-4000-8000-000000000000', 'Camping Río Cristal Anc
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/221/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/235/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/222/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/236/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/223/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/237/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/238/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/239/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Río Cristal 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -553,11 +585,15 @@ VALUES (v_cid, '0000000a-0000-4000-8000-000000000000', 'Camping Cerro Alegre Mai
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/224/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/240/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/225/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/241/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/226/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/242/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/243/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/244/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Cerro Alegre 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -570,11 +606,15 @@ VALUES (v_cid, '0000000b-0000-4000-8000-000000000000', 'Camping El Refugio Curac
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/227/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/245/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/228/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/246/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/229/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/247/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/248/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/249/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela El Refugio 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -587,11 +627,15 @@ VALUES (v_cid, '00000002-0000-4000-8000-000000000000', 'Camping Sendero del Vien
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/230/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/250/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/231/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/251/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/232/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/252/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/253/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/254/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Sendero del Viento 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -604,11 +648,15 @@ VALUES (v_cid, '00000003-0000-4000-8000-000000000000', 'Camping Noche Estrellada
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/233/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/255/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/234/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/256/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/235/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/257/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/258/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/259/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Noche Estrellada 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -621,11 +669,15 @@ VALUES (v_cid, '00000004-0000-4000-8000-000000000000', 'Camping Rincón Tranquil
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/236/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/260/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/237/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/261/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/238/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/262/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/263/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/264/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Rincón Tranquilo 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -638,11 +690,15 @@ VALUES (v_cid, '00000005-0000-4000-8000-000000000000', 'Camping El Manantial Fru
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/239/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/265/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/240/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/266/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/241/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/267/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/268/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/269/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela El Manantial 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -655,11 +711,15 @@ VALUES (v_cid, '00000006-0000-4000-8000-000000000000', 'Camping Praderas del Sur
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/242/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/270/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/243/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/271/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/244/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/272/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/273/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/274/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Praderas del Sur 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -672,11 +732,15 @@ VALUES (v_cid, '00000007-0000-4000-8000-000000000000', 'Camping Quebrada Verde O
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/245/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/275/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/246/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/276/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/247/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/277/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/278/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/279/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Quebrada Verde 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -689,11 +753,15 @@ VALUES (v_cid, '00000008-0000-4000-8000-000000000000', 'Camping Alto del Cielo S
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/248/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/280/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/249/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/281/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/250/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/282/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/283/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/284/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Alto del Cielo 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -706,11 +774,15 @@ VALUES (v_cid, '00000009-0000-4000-8000-000000000000', 'Camping Punta del Lago C
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/251/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/285/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/252/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/286/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/253/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/287/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/288/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/289/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Punta del Lago 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -723,11 +795,15 @@ VALUES (v_cid, '0000000a-0000-4000-8000-000000000000', 'Camping Los Canelos Zapa
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/254/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/290/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/255/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/291/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/256/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/292/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/293/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/294/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Los Canelos 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -740,11 +816,15 @@ VALUES (v_cid, '0000000b-0000-4000-8000-000000000000', 'Camping El Sauce Lago Ra
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/257/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/295/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/258/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/296/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/259/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/297/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/298/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/299/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela El Sauce 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -757,11 +837,15 @@ VALUES (v_cid, '00000002-0000-4000-8000-000000000000', 'Camping Aguada Clara Coy
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/260/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/300/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/261/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/301/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/262/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/302/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/303/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/304/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Aguada Clara 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -774,11 +858,15 @@ VALUES (v_cid, '00000003-0000-4000-8000-000000000000', 'Camping Horizonte Sur Vi
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/263/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/305/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/264/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/306/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/265/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/307/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/308/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/309/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Horizonte Sur 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -791,11 +879,15 @@ VALUES (v_cid, '00000004-0000-4000-8000-000000000000', 'Camping Paso del Indio T
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/266/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/310/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/267/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/311/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/268/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/312/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/313/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/314/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Paso del Indio 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -808,11 +900,15 @@ VALUES (v_cid, '00000005-0000-4000-8000-000000000000', 'Camping Camino de Sombra
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/269/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/315/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/270/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/316/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/271/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/317/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/318/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/319/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Camino de Sombra 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -825,11 +921,15 @@ VALUES (v_cid, '00000006-0000-4000-8000-000000000000', 'Camping Orillas del Laja
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/272/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/320/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/273/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/321/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/274/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/322/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/323/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/324/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Orillas del Laja 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -842,11 +942,15 @@ VALUES (v_cid, '00000007-0000-4000-8000-000000000000', 'Camping El Remanso Futal
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/275/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/325/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/276/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/326/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/277/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/327/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/328/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/329/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela El Remanso 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -859,11 +963,15 @@ VALUES (v_cid, '00000008-0000-4000-8000-000000000000', 'Camping Siete Lagos Lic�
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/278/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/330/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/279/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/331/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/280/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/332/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/333/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/334/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Siete Lagos 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -876,11 +984,15 @@ VALUES (v_cid, '00000009-0000-4000-8000-000000000000', 'Camping La Junta Matanza
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/281/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/335/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/282/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/336/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/283/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/337/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/338/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/339/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela La Junta 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -893,11 +1005,15 @@ VALUES (v_cid, '0000000a-0000-4000-8000-000000000000', 'Camping Piedra del Águi
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/284/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/340/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/285/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/341/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/286/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/342/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/343/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/344/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Piedra del Águila 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -910,11 +1026,15 @@ VALUES (v_cid, '0000000b-0000-4000-8000-000000000000', 'Camping Arroyo Frío Rí
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/287/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/345/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/288/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/346/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/289/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/347/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/348/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/349/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Parcela Arroyo Frío 1', 'tent', 4, 8000, '["Fogón","Agua potable","Baños compartidos","Duchas"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -928,11 +1048,15 @@ VALUES (v_cid, '00000002-0000-4000-8000-000000000000', 'Camping Los Pinos Pucón
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/290/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/350/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/291/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/351/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/292/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/352/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/353/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/354/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Los Pinos 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -945,11 +1069,15 @@ VALUES (v_cid, '00000003-0000-4000-8000-000000000000', 'Camping Lago Azul Puerto
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/293/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/355/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/294/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/356/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/295/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/357/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/358/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/359/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Lago Azul 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -962,11 +1090,15 @@ VALUES (v_cid, '00000004-0000-4000-8000-000000000000', 'Camping Del Bosque San J
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/296/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/360/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/297/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/361/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/298/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/362/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/363/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/364/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Del Bosque 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -979,11 +1111,15 @@ VALUES (v_cid, '00000005-0000-4000-8000-000000000000', 'Camping El Rancho Cajón
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/299/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/365/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/300/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/366/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/301/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/367/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/368/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/369/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña El Rancho 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -996,11 +1132,15 @@ VALUES (v_cid, '00000006-0000-4000-8000-000000000000', 'Camping Patagonia Puerto
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/302/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/370/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/303/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/371/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/304/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/372/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/373/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/374/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Patagonia 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1013,11 +1153,15 @@ VALUES (v_cid, '00000007-0000-4000-8000-000000000000', 'Camping Las Araucarias S
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/305/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/375/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/306/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/376/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/307/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/377/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/378/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/379/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Las Araucarias 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1030,11 +1174,15 @@ VALUES (v_cid, '00000008-0000-4000-8000-000000000000', 'Camping Vista Mar Villar
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/308/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/380/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/309/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/381/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/310/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/382/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/383/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/384/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Vista Mar 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1047,11 +1195,15 @@ VALUES (v_cid, '00000009-0000-4000-8000-000000000000', 'Camping Montaña Mágica
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/311/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/385/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/312/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/386/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/313/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/387/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/388/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/389/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Montaña Mágica 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1064,11 +1216,15 @@ VALUES (v_cid, '0000000a-0000-4000-8000-000000000000', 'Camping Quilanto Maitenc
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/314/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/390/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/315/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/391/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/316/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/392/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/393/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/394/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Quilanto 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1081,11 +1237,15 @@ VALUES (v_cid, '0000000b-0000-4000-8000-000000000000', 'Camping Piedra Roja Cura
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/317/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/395/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/318/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/396/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/319/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/397/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/398/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/399/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Piedra Roja 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1098,11 +1258,15 @@ VALUES (v_cid, '00000002-0000-4000-8000-000000000000', 'Camping Las Lengas Cochr
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/320/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/400/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/321/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/401/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/322/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/402/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/403/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/404/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Las Lengas 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1115,11 +1279,15 @@ VALUES (v_cid, '00000003-0000-4000-8000-000000000000', 'Camping El Arrayán La S
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/323/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/405/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/324/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/406/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/325/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/407/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/408/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/409/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña El Arrayán 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1132,11 +1300,15 @@ VALUES (v_cid, '00000004-0000-4000-8000-000000000000', 'Camping Tres Ríos Terma
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/326/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/410/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/327/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/411/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/328/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/412/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/413/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/414/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Tres Ríos 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1149,11 +1321,15 @@ VALUES (v_cid, '00000005-0000-4000-8000-000000000000', 'Camping La Hacienda Frut
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/329/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/415/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/330/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/416/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/331/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/417/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/418/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/419/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña La Hacienda 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1166,11 +1342,15 @@ VALUES (v_cid, '00000006-0000-4000-8000-000000000000', 'Camping Bosque Encantado
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/332/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/420/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/333/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/421/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/334/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/422/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/423/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/424/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Bosque Encantado 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1183,11 +1363,15 @@ VALUES (v_cid, '00000007-0000-4000-8000-000000000000', 'Camping Piedra del Sol O
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/335/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/425/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/336/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/426/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/337/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/427/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/428/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/429/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Piedra del Sol 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1200,11 +1384,15 @@ VALUES (v_cid, '00000008-0000-4000-8000-000000000000', 'Camping La Roca Santa Cr
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/338/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/430/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/339/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/431/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/340/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/432/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/433/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/434/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña La Roca 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1217,11 +1405,15 @@ VALUES (v_cid, '00000009-0000-4000-8000-000000000000', 'Camping Cielos Abiertos 
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/341/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/435/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/342/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/436/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/343/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/437/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/438/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/439/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Cielos Abiertos 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1234,11 +1426,15 @@ VALUES (v_cid, '0000000a-0000-4000-8000-000000000000', 'Camping El Mirador Zapal
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/344/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/440/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/345/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/441/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/346/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/442/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/443/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/444/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña El Mirador 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1251,11 +1447,15 @@ VALUES (v_cid, '0000000b-0000-4000-8000-000000000000', 'Camping Valle de Niebla 
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/347/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/445/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/348/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/446/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/349/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/447/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/448/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/449/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Valle de Niebla 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1268,11 +1468,15 @@ VALUES (v_cid, '00000002-0000-4000-8000-000000000000', 'Camping Las Quinchas Coy
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/350/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/450/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/351/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/451/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/352/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/452/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/453/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/454/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Las Quinchas 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1285,11 +1489,15 @@ VALUES (v_cid, '00000003-0000-4000-8000-000000000000', 'Camping Raíces del Sur 
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/353/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/455/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/354/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/456/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/355/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/457/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/458/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/459/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Raíces del Sur 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1302,11 +1510,15 @@ VALUES (v_cid, '00000004-0000-4000-8000-000000000000', 'Camping La Cascada Tongo
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/356/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/460/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/357/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/461/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/358/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/462/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/463/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/464/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña La Cascada 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1319,11 +1531,15 @@ VALUES (v_cid, '00000005-0000-4000-8000-000000000000', 'Camping Ruca del Bosque 
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/359/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/465/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/360/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/466/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/361/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/467/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/468/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/469/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Ruca del Bosque 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1336,11 +1552,15 @@ VALUES (v_cid, '00000006-0000-4000-8000-000000000000', 'Camping La Guarida Peñu
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/362/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/470/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/363/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/471/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/364/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/472/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/473/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/474/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña La Guarida 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1353,11 +1573,15 @@ VALUES (v_cid, '00000007-0000-4000-8000-000000000000', 'Camping El Alerce Futale
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/365/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/475/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/366/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/476/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/367/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/477/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/478/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/479/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña El Alerce 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1370,11 +1594,15 @@ VALUES (v_cid, '00000008-0000-4000-8000-000000000000', 'Camping Viento Norte Lic
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/368/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/480/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/369/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/481/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/370/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/482/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/483/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/484/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Viento Norte 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1387,11 +1615,15 @@ VALUES (v_cid, '00000009-0000-4000-8000-000000000000', 'Camping Nido de Cóndor 
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/371/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/485/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/372/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/486/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/373/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/487/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/488/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/489/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Nido de Cóndor 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1404,11 +1636,15 @@ VALUES (v_cid, '0000000a-0000-4000-8000-000000000000', 'Camping Alto Villarrica 
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/374/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/490/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/375/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/491/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/376/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/492/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/493/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/494/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Alto Villarrica 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1421,11 +1657,15 @@ VALUES (v_cid, '0000000b-0000-4000-8000-000000000000', 'Camping Sendero Rojo Rí
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/377/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/495/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/378/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/496/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/379/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/497/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/498/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/499/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Cabaña Sendero Rojo 1', 'cabin', 6, 45000, '["Cocina equipada","Calefacción","WiFi","Ropa de cama"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1439,11 +1679,15 @@ VALUES (v_cid, '00000002-0000-4000-8000-000000000000', 'Camping Estrellas Pucón
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/380/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/500/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/381/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/501/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/382/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/502/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/503/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/504/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Estrellas 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1456,11 +1700,15 @@ VALUES (v_cid, '00000003-0000-4000-8000-000000000000', 'Camping Safari Puerto Va
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/383/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/505/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/384/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/506/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/385/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/507/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/508/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/509/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Safari 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1473,11 +1721,15 @@ VALUES (v_cid, '00000004-0000-4000-8000-000000000000', 'Camping Cúpula del Ciel
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/386/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/510/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/387/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/511/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/388/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/512/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/513/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/514/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Cúpula del Cielo 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1490,11 +1742,15 @@ VALUES (v_cid, '00000005-0000-4000-8000-000000000000', 'Camping Jardín Secreto 
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/389/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/515/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/390/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/516/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/391/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/517/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/518/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/519/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Jardín Secreto 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1507,11 +1763,15 @@ VALUES (v_cid, '00000006-0000-4000-8000-000000000000', 'Camping Árbol Eterno Pu
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/392/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/520/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/393/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/521/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/394/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/522/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/523/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/524/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Árbol Eterno 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1524,11 +1784,15 @@ VALUES (v_cid, '00000007-0000-4000-8000-000000000000', 'Camping Burbujas San Ped
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/395/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/525/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/396/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/526/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/397/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/527/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/528/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/529/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Burbujas 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1541,11 +1805,15 @@ VALUES (v_cid, '00000008-0000-4000-8000-000000000000', 'Camping Nido de Águila 
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/398/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/530/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/399/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/531/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/400/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/532/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/533/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/534/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Nido de Águila 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1558,11 +1826,15 @@ VALUES (v_cid, '00000009-0000-4000-8000-000000000000', 'Camping Tierra Viva Ancu
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/401/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/535/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/402/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/536/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/403/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/537/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/538/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/539/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Tierra Viva 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1575,11 +1847,15 @@ VALUES (v_cid, '0000000a-0000-4000-8000-000000000000', 'Camping Las Nubes Maiten
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/404/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/540/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/405/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/541/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/406/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/542/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/543/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/544/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Las Nubes 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1592,11 +1868,15 @@ VALUES (v_cid, '0000000b-0000-4000-8000-000000000000', 'Camping El Oasis Curacau
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/407/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/545/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/408/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/546/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/409/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/547/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/548/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/549/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium El Oasis 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1609,11 +1889,15 @@ VALUES (v_cid, '00000002-0000-4000-8000-000000000000', 'Camping Refugio Lunar Co
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/410/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/550/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/411/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/551/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/412/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/552/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/553/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/554/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Refugio Lunar 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1626,11 +1910,15 @@ VALUES (v_cid, '00000003-0000-4000-8000-000000000000', 'Camping Domo Austral La 
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/413/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/555/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/414/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/556/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/415/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/557/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/558/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/559/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Domo Austral 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1643,11 +1931,15 @@ VALUES (v_cid, '00000004-0000-4000-8000-000000000000', 'Camping El Pabellón Ter
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/416/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/560/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/417/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/561/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/418/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/562/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/563/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/564/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium El Pabellón 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1660,11 +1952,15 @@ VALUES (v_cid, '00000005-0000-4000-8000-000000000000', 'Camping Nube Blanca Frut
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/419/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/565/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/420/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/566/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/421/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/567/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/568/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/569/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Nube Blanca 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1677,11 +1973,15 @@ VALUES (v_cid, '00000006-0000-4000-8000-000000000000', 'Camping Las Esferas Torr
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/422/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/570/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/423/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/571/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/424/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/572/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/573/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/574/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Las Esferas 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1694,11 +1994,15 @@ VALUES (v_cid, '00000007-0000-4000-8000-000000000000', 'Camping Horizonte Mágic
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/425/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/575/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/426/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/576/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/427/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/577/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/578/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/579/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Horizonte Mágico 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1711,11 +2015,15 @@ VALUES (v_cid, '00000008-0000-4000-8000-000000000000', 'Camping El Santuario San
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/428/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/580/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/429/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/581/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/430/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/582/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/583/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/584/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium El Santuario 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1728,11 +2036,15 @@ VALUES (v_cid, '00000009-0000-4000-8000-000000000000', 'Camping La Capsula Const
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/431/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/585/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/432/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/586/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/433/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/587/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/588/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/589/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium La Capsula 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1745,11 +2057,15 @@ VALUES (v_cid, '0000000a-0000-4000-8000-000000000000', 'Camping Éter Zapallar',
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/434/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/590/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/435/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/591/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/436/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/592/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/593/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/594/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Éter 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1762,11 +2078,15 @@ VALUES (v_cid, '0000000b-0000-4000-8000-000000000000', 'Camping Cosmos Lago Ranc
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/437/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/595/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/438/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/596/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/439/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/597/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/598/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/599/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Cosmos 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1779,11 +2099,15 @@ VALUES (v_cid, '00000002-0000-4000-8000-000000000000', 'Camping Aurora Coyhaique
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/440/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/600/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/441/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/601/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/442/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/602/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/603/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/604/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Aurora 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1796,11 +2120,15 @@ VALUES (v_cid, '00000003-0000-4000-8000-000000000000', 'Camping Bruma Vichuquén
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/443/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/605/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/444/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/606/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/445/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/607/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/608/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/609/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Bruma 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1813,11 +2141,15 @@ VALUES (v_cid, '00000004-0000-4000-8000-000000000000', 'Camping Silencio Vivo To
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/446/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/610/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/447/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/611/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/448/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/612/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/613/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/614/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Silencio Vivo 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1830,11 +2162,15 @@ VALUES (v_cid, '00000005-0000-4000-8000-000000000000', 'Camping El Portal Caburg
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/449/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/615/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/450/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/616/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/451/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/617/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/618/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/619/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium El Portal 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1847,11 +2183,15 @@ VALUES (v_cid, '00000006-0000-4000-8000-000000000000', 'Camping Umbral Verde Pe�
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/452/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/620/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/453/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/621/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/454/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/622/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/623/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/624/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Umbral Verde 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1864,11 +2204,15 @@ VALUES (v_cid, '00000007-0000-4000-8000-000000000000', 'Camping Nido Estelar Fut
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/455/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/625/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/456/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/626/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/457/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/627/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/628/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/629/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Nido Estelar 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1881,11 +2225,15 @@ VALUES (v_cid, '00000008-0000-4000-8000-000000000000', 'Camping La Ensoñación 
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/458/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/630/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/459/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/631/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/460/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/632/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/633/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/634/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium La Ensoñación 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1898,11 +2246,15 @@ VALUES (v_cid, '00000009-0000-4000-8000-000000000000', 'Camping Éxtasis Natural
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/461/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/635/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/462/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/636/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/463/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/637/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/638/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/639/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Éxtasis Natural 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1915,11 +2267,15 @@ VALUES (v_cid, '0000000a-0000-4000-8000-000000000000', 'Camping El Origen Chait�
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/464/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/640/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/465/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/641/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/466/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/642/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/643/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/644/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium El Origen 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1932,11 +2288,15 @@ VALUES (v_cid, '0000000b-0000-4000-8000-000000000000', 'Camping Tierra Alta Río
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/467/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/645/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/468/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/646/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/469/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/647/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/648/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/649/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Domo Premium Tierra Alta 1', 'glamping', 2, 80000, '["Cama king","Desayuno incluido","WiFi","Calefacción"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1950,11 +2310,15 @@ VALUES (v_cid, '00000002-0000-4000-8000-000000000000', 'Camping Ruta Sur Pucón'
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/470/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/650/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/471/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/651/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/472/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/652/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/653/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/654/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Ruta Sur 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1967,11 +2331,15 @@ VALUES (v_cid, '00000003-0000-4000-8000-000000000000', 'Camping Camino Austral P
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/473/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/655/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/474/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/656/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/475/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/657/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/658/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/659/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Camino Austral 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -1984,11 +2352,15 @@ VALUES (v_cid, '00000004-0000-4000-8000-000000000000', 'Camping Costa Libre San 
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/476/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/660/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/477/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/661/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/478/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/662/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/663/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/664/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Costa Libre 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2001,11 +2373,15 @@ VALUES (v_cid, '00000005-0000-4000-8000-000000000000', 'Camping Las Terrazas Caj
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/479/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/665/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/480/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/666/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/481/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/667/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/668/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/669/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Las Terrazas 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2018,11 +2394,15 @@ VALUES (v_cid, '00000006-0000-4000-8000-000000000000', 'Camping Paso de Montaña
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/482/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/670/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/483/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/671/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/484/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/672/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/673/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/674/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Paso de Montaña 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2035,11 +2415,15 @@ VALUES (v_cid, '00000007-0000-4000-8000-000000000000', 'Camping Ruta del Vino Sa
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/485/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/675/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/486/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/676/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/487/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/677/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/678/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/679/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Ruta del Vino 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2052,11 +2436,15 @@ VALUES (v_cid, '00000008-0000-4000-8000-000000000000', 'Camping Norte Grande Vil
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/488/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/680/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/489/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/681/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/490/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/682/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/683/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/684/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Norte Grande 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2069,11 +2457,15 @@ VALUES (v_cid, '00000009-0000-4000-8000-000000000000', 'Camping Lago Sur Ancud',
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/491/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/685/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/492/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/686/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/493/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/687/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/688/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/689/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Lago Sur 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2086,11 +2478,15 @@ VALUES (v_cid, '0000000a-0000-4000-8000-000000000000', 'Camping Valle Central Ma
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/494/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/690/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/495/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/691/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/496/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/692/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/693/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/694/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Valle Central 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2103,11 +2499,15 @@ VALUES (v_cid, '0000000b-0000-4000-8000-000000000000', 'Camping Punta Extremo Cu
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/497/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/695/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/498/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/696/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/499/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/697/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/698/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/699/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Punta Extremo 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2120,11 +2520,15 @@ VALUES (v_cid, '00000002-0000-4000-8000-000000000000', 'Camping Km 0 Sur Cochran
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/500/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/700/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/501/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/701/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/502/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/702/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/703/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/704/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Km 0 Sur 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2137,11 +2541,15 @@ VALUES (v_cid, '00000003-0000-4000-8000-000000000000', 'Camping Gasolinera Verde
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/503/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/705/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/504/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/706/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/505/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/707/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/708/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/709/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Gasolinera Verde 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2154,11 +2562,15 @@ VALUES (v_cid, '00000004-0000-4000-8000-000000000000', 'Camping Área de Descans
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/506/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/710/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/507/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/711/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/508/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/712/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/713/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/714/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Área de Descanso 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2171,11 +2583,15 @@ VALUES (v_cid, '00000005-0000-4000-8000-000000000000', 'Camping El Poste Frutill
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/509/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/715/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/510/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/716/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/511/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/717/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/718/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/719/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper El Poste 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2188,11 +2604,15 @@ VALUES (v_cid, '00000006-0000-4000-8000-000000000000', 'Camping Cruce del Viento
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/512/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/720/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/513/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/721/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/514/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/722/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/723/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/724/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Cruce del Viento 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2205,11 +2625,15 @@ VALUES (v_cid, '00000007-0000-4000-8000-000000000000', 'Camping La Bifurcación 
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/515/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/725/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/516/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/726/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/517/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/727/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/728/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/729/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper La Bifurcación 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2222,11 +2646,15 @@ VALUES (v_cid, '00000008-0000-4000-8000-000000000000', 'Camping Llave del Sur Sa
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/518/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/730/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/519/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/731/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/520/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/732/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/733/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/734/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Llave del Sur 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2239,11 +2667,15 @@ VALUES (v_cid, '00000009-0000-4000-8000-000000000000', 'Camping Inicio Patagonia
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/521/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/735/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/522/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/736/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/523/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/737/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/738/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/739/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Inicio Patagonia 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2256,11 +2688,15 @@ VALUES (v_cid, '0000000a-0000-4000-8000-000000000000', 'Camping Punto Rojo Zapal
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/524/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/740/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/525/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/741/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/526/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/742/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/743/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/744/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Punto Rojo 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2273,11 +2709,15 @@ VALUES (v_cid, '0000000b-0000-4000-8000-000000000000', 'Camping Escala Austral L
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/527/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/745/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/528/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/746/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/529/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/747/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/748/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/749/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Escala Austral 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2290,11 +2730,15 @@ VALUES (v_cid, '00000002-0000-4000-8000-000000000000', 'Camping Ruta Costera Coy
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/530/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/750/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/531/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/751/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/532/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/752/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/753/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/754/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Ruta Costera 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2307,11 +2751,15 @@ VALUES (v_cid, '00000003-0000-4000-8000-000000000000', 'Camping Freno en Curva V
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/533/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/755/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/534/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/756/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/535/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/757/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/758/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/759/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Freno en Curva 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2324,11 +2772,15 @@ VALUES (v_cid, '00000004-0000-4000-8000-000000000000', 'Camping Mirador del Asfa
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/536/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/760/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/537/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/761/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/538/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/762/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/763/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/764/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Mirador del Asfalto 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2341,11 +2793,15 @@ VALUES (v_cid, '00000005-0000-4000-8000-000000000000', 'Camping Las Señales Cab
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/539/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/765/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/540/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/766/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/541/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/767/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/768/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/769/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Las Señales 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2358,11 +2814,15 @@ VALUES (v_cid, '00000006-0000-4000-8000-000000000000', 'Camping El Tapón Peñue
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/542/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/770/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/543/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/771/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/544/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/772/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/773/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/774/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper El Tapón 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2375,11 +2835,15 @@ VALUES (v_cid, '00000007-0000-4000-8000-000000000000', 'Camping Velocidad Cero F
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/545/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/775/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/546/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/776/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/547/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/777/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/778/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/779/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Velocidad Cero 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2392,11 +2856,15 @@ VALUES (v_cid, '00000008-0000-4000-8000-000000000000', 'Camping El Crucero Licá
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/548/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/780/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/549/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/781/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/550/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/782/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/783/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/784/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper El Crucero 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2409,11 +2877,15 @@ VALUES (v_cid, '00000009-0000-4000-8000-000000000000', 'Camping Brújula Sur Mat
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/551/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/785/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/552/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/786/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/553/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/787/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/788/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/789/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Brújula Sur 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2426,11 +2898,15 @@ VALUES (v_cid, '0000000a-0000-4000-8000-000000000000', 'Camping Carpa Rodante Ch
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/554/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/790/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/555/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/791/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/556/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/792/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/793/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/794/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Carpa Rodante 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');
@@ -2443,11 +2919,15 @@ VALUES (v_cid, '0000000b-0000-4000-8000-000000000000', 'Camping Motor Apagado R�
 ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/557/800/600', 0, true);
+VALUES (v_cid, 'https://picsum.photos/seed/795/800/600', 0, true);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/558/800/600', 1, false);
+VALUES (v_cid, 'https://picsum.photos/seed/796/800/600', 1, false);
 INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
-VALUES (v_cid, 'https://picsum.photos/seed/559/800/600', 2, false);
+VALUES (v_cid, 'https://picsum.photos/seed/797/800/600', 2, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/798/800/600', 3, false);
+INSERT INTO public.camping_images (camping_id, url, "order", is_cover)
+VALUES (v_cid, 'https://picsum.photos/seed/799/800/600', 4, false);
 
 INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, amenities, description, status)
 VALUES (v_cid, 'Sitio Camper Motor Apagado 1', 'camper', 4, 15000, '["Electricidad 220V","Agua potable","Descarga grises","Baños"]', 'Unidad principal con todas las comodidades.', 'active');

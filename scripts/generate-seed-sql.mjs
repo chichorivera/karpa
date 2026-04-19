@@ -227,8 +227,8 @@ for (const type of ['tent', 'cabin', 'glamping', 'camper']) {
     lines.push(`ON CONFLICT (slug) DO NOTHING;`)
     lines.push(``)
 
-    // 3 images
-    for (let p = 0; p < 3; p++) {
+    // 5 images
+    for (let p = 0; p < 5; p++) {
       lines.push(`INSERT INTO public.camping_images (camping_id, url, "order", is_cover)`)
       lines.push(`VALUES (v_cid, 'https://picsum.photos/seed/${imgSeed}/800/600', ${p}, ${p === 0 ? 'true' : 'false'});`)
       imgSeed++
