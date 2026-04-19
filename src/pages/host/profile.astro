@@ -25,7 +25,7 @@ const initials  = (profile?.full_name ?? user.email ?? 'H')[0].toUpperCase()
 <HostLayout title="Mi Perfil" active="/host/profile">
   <div class="max-w-lg mx-auto">
     {success && <div class="mb-5 px-4 py-3 rounded-xl text-sm bg-green-50 text-green-700 border border-green-100">Perfil actualizado.</div>}
-    {error && <div class="mb-5 px-4 py-3 rounded-xl text-sm bg-red-50 text-red-700 border border-red-100">{error}</div>}
+    {error   && <div class="mb-5 px-4 py-3 rounded-xl text-sm bg-red-50 text-red-700 border border-red-100">{error}</div>}
 
     <div class="bg-white border rounded-2xl p-6" style="border-color:#e8ddd4">
       <div class="flex items-center gap-4 mb-6 pb-6 border-b" style="border-color:#e8ddd4">
@@ -77,38 +77,30 @@ const initials  = (profile?.full_name ?? user.email ?? 'H')[0].toUpperCase()
   </div>
 
   <!-- Crop modal -->
-  <div id="crop-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4" style="background:rgba(0,0,0,0.7)">
+  <div id="crop-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.7)">
     <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden">
       <div class="px-5 py-4 border-b flex items-center justify-between" style="border-color:#e8ddd4">
         <h3 class="font-semibold text-gray-900 text-sm">Recortar foto de perfil</h3>
-        <button id="crop-cancel-top" class="p-1 rounded-lg hover:bg-gray-100">
+        <button id="crop-close" class="p-1 rounded-lg hover:bg-gray-100">
           <svg class="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
-      <div class="p-4">
-        <p class="text-xs text-gray-400 mb-3 text-center">Arrastra la imagen para ajustar el recorte cuadrado</p>
-        <div id="crop-container" class="relative mx-auto overflow-hidden rounded-xl" style="width:280px;height:280px;background:#000;cursor:move">
-          <img id="crop-img" src="" alt="" class="absolute select-none" draggable="false"
-               style="transform-origin:top left;user-select:none;-webkit-user-drag:none" />
-          <div class="absolute inset-0 pointer-events-none">
-            <div id="crop-overlay" class="absolute rounded-lg" style="border:2px solid white;box-shadow:0 0 0 9999px rgba(0,0,0,0.5);width:240px;height:240px;top:20px;left:20px"></div>
-          </div>
-        </div>
-        <canvas id="crop-canvas" class="hidden"></canvas>
+      <div class="p-4 flex flex-col items-center">
+        <p class="text-xs text-gray-400 mb-3">Arrastra para reposicionar</p>
+        <canvas id="crop-preview" width="280" height="280"
+                style="display:block;width:280px;height:280px;border-radius:0.75rem;cursor:move;touch-action:none"></canvas>
+        <canvas id="crop-output" width="400" height="400" style="display:none"></canvas>
+        <img id="crop-src" style="display:none" alt="" />
         <div id="crop-error" class="text-xs text-red-500 mt-2 text-center hidden"></div>
-        <div class="flex gap-3 mt-4">
+        <div class="flex gap-3 mt-4 w-full">
           <button id="crop-cancel" type="button"
             class="flex-1 py-2.5 rounded-xl border text-sm font-semibold text-gray-600 hover:bg-gray-50 transition"
-            style="border-color:#D9C3A5">
-            Cancelar
-          </button>
+            style="border-color:#D9C3A5">Cancelar</button>
           <button id="crop-confirm" type="button"
             class="flex-1 py-2.5 rounded-xl text-white text-sm font-semibold hover:opacity-90 transition"
-            style="background-color:#2E593F">
-            Confirmar
-          </button>
+            style="background-color:#2E593F">Confirmar</button>
         </div>
       </div>
     </div>
@@ -116,129 +108,123 @@ const initials  = (profile?.full_name ?? user.email ?? 'H')[0].toUpperCase()
 </HostLayout>
 
 <script>
-  const fileInput     = document.getElementById('avatar-file') as HTMLInputElement
-  const avatarBtn     = document.getElementById('avatar-btn')!
-  const avatarBtn2    = document.getElementById('avatar-btn2')!
-  const cropModal     = document.getElementById('crop-modal')!
-  const cropImg       = document.getElementById('crop-img') as HTMLImageElement
-  const cropContainer = document.getElementById('crop-container')!
-  const cropCanvas    = document.getElementById('crop-canvas') as HTMLCanvasElement
-  const cropConfirm   = document.getElementById('crop-confirm')!
-  const cropCancel    = document.getElementById('crop-cancel')!
-  const cropCancelTop = document.getElementById('crop-cancel-top')!
-  const cropError     = document.getElementById('crop-error')!
+  const C = 280, SQ = 240, OFF = 20
 
-  const CONTAINER    = 280
-  const SQUARE       = 240
-  const SQUARE_OFFSET = 20
+  const fileInput  = document.getElementById('avatar-file')  as HTMLInputElement
+  const modal      = document.getElementById('crop-modal')!
+  const preview    = document.getElementById('crop-preview')  as HTMLCanvasElement
+  const output     = document.getElementById('crop-output')   as HTMLCanvasElement
+  const srcImg     = document.getElementById('crop-src')      as HTMLImageElement
+  const confirmBtn = document.getElementById('crop-confirm')!
+  const cancelBtn  = document.getElementById('crop-cancel')!
+  const closeBtn   = document.getElementById('crop-close')!
+  const errorEl    = document.getElementById('crop-error')!
+  const pCtx       = preview.getContext('2d')!
+  const oCtx       = output.getContext('2d')!
 
-  let imgOffsetX = 0, imgOffsetY = 0, imgScale = 1
-  let dragStartX = 0, dragStartY = 0, isDragging = false
+  let ox = 0, oy = 0, scale = 1, dragging = false, dx = 0, dy = 0
 
-  function openFile() { fileInput.click() }
-  avatarBtn.addEventListener('click', openFile)
-  avatarBtn2.addEventListener('click', openFile)
+  document.getElementById('avatar-btn')!.addEventListener('click',  () => fileInput.click())
+  document.getElementById('avatar-btn2')!.addEventListener('click', () => fileInput.click())
 
   fileInput.addEventListener('change', () => {
     const file = fileInput.files?.[0]
     if (!file) return
     const url = URL.createObjectURL(file)
-    cropImg.onload = () => {
-      const nw = cropImg.naturalWidth, nh = cropImg.naturalHeight
-      imgScale = nw < nh ? CONTAINER / nw : CONTAINER / nh
-      const w  = nw * imgScale, h = nh * imgScale
-      imgOffsetX = (CONTAINER - w) / 2
-      imgOffsetY = (CONTAINER - h) / 2
-      applyTransform(w, h)
-      cropModal.classList.remove('hidden')
-      cropModal.classList.add('flex')
+    srcImg.onload = () => {
+      const nw = srcImg.naturalWidth, nh = srcImg.naturalHeight
+      scale = nw < nh ? C / nw : C / nh
+      const w = nw * scale, h = nh * scale
+      ox = (C - w) / 2
+      oy = (C - h) / 2
+      draw()
+      modal.style.display = 'flex'
     }
-    cropImg.src = url
+    srcImg.src = url
   })
 
-  function applyTransform(w?: number, h?: number) {
-    const ww = w ?? cropImg.naturalWidth  * imgScale
-    const hh = h ?? cropImg.naturalHeight * imgScale
-    cropImg.style.width  = ww + 'px'
-    cropImg.style.height = hh + 'px'
-    cropImg.style.left   = imgOffsetX + 'px'
-    cropImg.style.top    = imgOffsetY + 'px'
+  function draw() {
+    const w = srcImg.naturalWidth * scale, h = srcImg.naturalHeight * scale
+    pCtx.clearRect(0, 0, C, C)
+    pCtx.drawImage(srcImg, ox, oy, w, h)
+    pCtx.fillStyle = 'rgba(0,0,0,0.55)'
+    pCtx.fillRect(0,        0,        C,   OFF)
+    pCtx.fillRect(0,        OFF + SQ,  C,   OFF)
+    pCtx.fillRect(0,        OFF,       OFF,  SQ)
+    pCtx.fillRect(OFF + SQ, OFF,       OFF,  SQ)
+    pCtx.strokeStyle = 'rgba(255,255,255,0.85)'
+    pCtx.lineWidth = 2
+    pCtx.strokeRect(OFF + 1, OFF + 1, SQ - 2, SQ - 2)
+    pCtx.strokeStyle = 'white'
+    pCtx.lineWidth = 3
+    const cs = 14
+    for (const [cx, cy] of [[OFF, OFF], [OFF+SQ, OFF], [OFF, OFF+SQ], [OFF+SQ, OFF+SQ]] as [number,number][]) {
+      const sx = cx === OFF ? 1 : -1, sy = cy === OFF ? 1 : -1
+      pCtx.beginPath()
+      pCtx.moveTo(cx + sx * cs, cy); pCtx.lineTo(cx, cy); pCtx.lineTo(cx, cy + sy * cs)
+      pCtx.stroke()
+    }
   }
 
-  cropContainer.addEventListener('mousedown', startDrag)
-  cropContainer.addEventListener('touchstart', startDrag, { passive: true })
-  window.addEventListener('mousemove', onDrag)
-  window.addEventListener('touchmove', onDrag, { passive: false })
-  window.addEventListener('mouseup', stopDrag)
-  window.addEventListener('touchend', stopDrag)
-
-  function startDrag(e: MouseEvent | TouchEvent) {
-    isDragging = true
-    const pt = 'touches' in e ? e.touches[0] : e
-    dragStartX = pt.clientX - imgOffsetX
-    dragStartY = pt.clientY - imgOffsetY
+  function clamp() {
+    const w = srcImg.naturalWidth * scale, h = srcImg.naturalHeight * scale
+    ox = Math.max(OFF + SQ - w, Math.min(OFF, ox))
+    oy = Math.max(OFF + SQ - h, Math.min(OFF, oy))
   }
 
-  function onDrag(e: MouseEvent | TouchEvent) {
-    if (!isDragging) return
-    if ('touches' in e) e.preventDefault()
-    const pt = 'touches' in e ? e.touches[0] : e
-    const w  = cropImg.naturalWidth  * imgScale
-    const h  = cropImg.naturalHeight * imgScale
-    imgOffsetX = pt.clientX - dragStartX
-    imgOffsetY = pt.clientY - dragStartY
-    imgOffsetX = Math.max(SQUARE_OFFSET + SQUARE - w, Math.min(SQUARE_OFFSET, imgOffsetX))
-    imgOffsetY = Math.max(SQUARE_OFFSET + SQUARE - h, Math.min(SQUARE_OFFSET, imgOffsetY))
-    applyTransform()
-  }
+  preview.addEventListener('mousedown', e => { dragging = true; dx = e.clientX - ox; dy = e.clientY - oy })
+  window.addEventListener('mousemove',  e => { if (!dragging) return; ox = e.clientX - dx; oy = e.clientY - dy; clamp(); draw() })
+  window.addEventListener('mouseup',    () => { dragging = false })
 
-  function stopDrag() { isDragging = false }
+  preview.addEventListener('touchstart', e => {
+    e.preventDefault(); dragging = true
+    dx = e.touches[0].clientX - ox; dy = e.touches[0].clientY - oy
+  }, { passive: false })
+  window.addEventListener('touchmove', e => {
+    if (!dragging) return; e.preventDefault()
+    ox = e.touches[0].clientX - dx; oy = e.touches[0].clientY - dy; clamp(); draw()
+  }, { passive: false })
+  window.addEventListener('touchend', () => { dragging = false })
 
   function closeCrop() {
-    cropModal.classList.add('hidden')
-    cropModal.classList.remove('flex')
-    cropError.classList.add('hidden')
+    modal.style.display = 'none'
+    errorEl.classList.add('hidden')
     fileInput.value = ''
   }
-  cropCancel.addEventListener('click', closeCrop)
-  cropCancelTop.addEventListener('click', closeCrop)
+  cancelBtn.addEventListener('click', closeCrop)
+  closeBtn.addEventListener('click',  closeCrop)
 
-  cropConfirm.addEventListener('click', async () => {
-    cropConfirm.textContent = 'Subiendo...'
-    cropConfirm.setAttribute('disabled', 'true')
+  confirmBtn.addEventListener('click', async () => {
+    confirmBtn.textContent = 'Subiendo...'
+    confirmBtn.setAttribute('disabled', 'true')
     try {
-      const OUTPUT = 400
-      cropCanvas.width = OUTPUT; cropCanvas.height = OUTPUT
-      const ctx = cropCanvas.getContext('2d')!
-      const srcX = (SQUARE_OFFSET - imgOffsetX) / imgScale
-      const srcY = (SQUARE_OFFSET - imgOffsetY) / imgScale
-      const srcS = SQUARE / imgScale
-      ctx.drawImage(cropImg, srcX, srcY, srcS, srcS, 0, 0, OUTPUT, OUTPUT)
-      const blob = await new Promise<Blob>((res) =>
-        cropCanvas.toBlob(b => res(b!), 'image/jpeg', 0.92)
-      )
+      const srcX = (OFF - ox) / scale, srcY = (OFF - oy) / scale, srcS = SQ / scale
+      oCtx.clearRect(0, 0, 400, 400)
+      oCtx.drawImage(srcImg, srcX, srcY, srcS, srcS, 0, 0, 400, 400)
+      const blob = await new Promise<Blob>(res => output.toBlob(b => res(b!), 'image/jpeg', 0.92))
       const fd = new FormData()
       fd.append('avatar', blob, 'avatar.jpg')
       const resp = await fetch('/api/profile/avatar', { method: 'POST', body: fd })
       const json = await resp.json()
       if (!resp.ok) throw new Error(json.error ?? 'Error')
-      const preview = document.getElementById('avatar-preview')
-      if (preview instanceof HTMLImageElement) {
-        preview.src = json.url
+      const prev = document.getElementById('avatar-preview')
+      if (prev instanceof HTMLImageElement) {
+        prev.src = json.url
       } else {
-        const img = document.createElement('img')
-        img.src = json.url; img.id = 'avatar-preview'; img.alt = 'avatar'
-        img.className = 'w-16 h-16 rounded-full object-cover border-2'
+        const img = Object.assign(document.createElement('img'), {
+          id: 'avatar-preview', src: json.url, alt: 'avatar',
+          className: 'w-16 h-16 rounded-full object-cover border-2'
+        })
         img.style.borderColor = '#D9C3A5'
-        preview?.parentNode?.replaceChild(img, preview)
+        prev?.replaceWith(img)
       }
       closeCrop()
     } catch (err: any) {
-      cropError.textContent = err.message ?? 'Error al subir la foto.'
-      cropError.classList.remove('hidden')
+      errorEl.textContent = err.message ?? 'Error al subir'
+      errorEl.classList.remove('hidden')
     } finally {
-      cropConfirm.textContent = 'Confirmar'
-      cropConfirm.removeAttribute('disabled')
+      confirmBtn.textContent = 'Confirmar'
+      confirmBtn.removeAttribute('disabled')
     }
   })
 </script>
