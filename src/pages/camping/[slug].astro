@@ -331,9 +331,8 @@ const unitTypeLabel: Record<string, string> = {
   </main>
 
   <Footer />
-</PublicLayout>
 
-<script define:vars={{ galleryImages: images.map((i: any) => i.url) }}>
+  <script define:vars={{ galleryImages: images.map((i: any) => i.url) }}>
   const modal   = document.getElementById('gallery-modal')
   const modalImg = document.getElementById('modal-img')
   const counter  = document.getElementById('modal-counter')
@@ -414,22 +413,23 @@ const unitTypeLabel: Record<string, string> = {
   }, { passive: true })
 </script>
 
-{camping.lat && camping.lng && (
-  <>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script type="application/json" id="camping-map-data" set:html={JSON.stringify({ lat: camping.lat, lng: camping.lng, name: camping.name })}></script>
-    <script is:inline>
-      const { lat, lng, name } = JSON.parse(document.getElementById('camping-map-data').textContent)
-      const map = L.map('detail-map', { zoomControl: false, scrollWheelZoom: false })
-        .setView([lat, lng], 13)
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap'
-      }).addTo(map)
-      L.circleMarker([lat, lng], {
-        radius: 10, fillColor: '#6D4C3D', color: 'white',
-        weight: 3, fillOpacity: 1
-      }).addTo(map)
-    </script>
-  </>
-)}
+  {camping.lat && camping.lng && (
+    <>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+      <script type="application/json" id="camping-map-data" set:html={JSON.stringify({ lat: camping.lat, lng: camping.lng, name: camping.name })}></script>
+      <script is:inline>
+        const { lat, lng, name } = JSON.parse(document.getElementById('camping-map-data').textContent)
+        const map = L.map('detail-map', { zoomControl: false, scrollWheelZoom: false })
+          .setView([lat, lng], 13)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap'
+        }).addTo(map)
+        L.circleMarker([lat, lng], {
+          radius: 10, fillColor: '#6D4C3D', color: 'white',
+          weight: 3, fillOpacity: 1
+        }).addTo(map)
+      </script>
+    </>
+  )}
+</PublicLayout>
