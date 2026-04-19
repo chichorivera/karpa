@@ -16,15 +16,13 @@ const { transparent = false } = Astro.props
 
     <!-- Logo -->
     <a href="/" class="shrink-0">
-      <span
-        class={`text-2xl font-bold transition-colors ${transparent ? 'text-white' : ''}`}
-        style={transparent ? '' : 'color:#6D4C3D'}
+      <img
         id="nav-logo"
+        src={transparent ? '/logo-karpa-blanco.png' : '/logo-karpa.png'}
+        alt="Karpa"
+        class="h-9 w-auto transition-all duration-300"
         data-transparent={transparent}
-        style="font-family:'Playfair Display',serif"
-      >
-        Karpa
-      </span>
+      />
     </a>
 
     <!-- Buscador compacto (solo en páginas internas) -->
@@ -63,20 +61,17 @@ const { transparent = false } = Astro.props
 
 <script>
   const navbar = document.getElementById('navbar')
-  const logo   = document.getElementById('nav-logo')
+  const logo   = document.getElementById('nav-logo') as HTMLImageElement
   const isTransparent = logo?.dataset.transparent === 'true'
 
-  if (isTransparent && navbar) {
+  if (isTransparent && navbar && logo) {
     const update = () => {
       const scrolled = window.scrollY > 60
-      navbar.classList.toggle('bg-white',   scrolled)
-      navbar.classList.toggle('border-b',   scrolled)
+      navbar.classList.toggle('bg-white',       scrolled)
+      navbar.classList.toggle('border-b',       scrolled)
       navbar.classList.toggle('bg-transparent', !scrolled)
-      navbar.classList.toggle('shadow-sm',  scrolled)
-      if (logo) {
-        logo.style.color = scrolled ? '#6D4C3D' : ''
-        logo.classList.toggle('text-white', !scrolled)
-      }
+      navbar.classList.toggle('shadow-sm',      scrolled)
+      logo.src = scrolled ? '/logo-karpa.png' : '/logo-karpa-blanco.png'
     }
     window.addEventListener('scroll', update, { passive: true })
     update()

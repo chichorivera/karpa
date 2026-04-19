@@ -10,7 +10,8 @@
       "Bash(git pull *)",
       "Bash(npm create *)",
       "Read(//Users/nexbu/.nvm/versions/node/**)",
-      "Bash(brew list *)"
+      "Bash(brew list *)",
+      "Bash(git commit *)"
     ]
   }
 }
