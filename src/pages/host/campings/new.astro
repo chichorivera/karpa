@@ -1,0 +1,159 @@
+---
+import HostLayout from '../../../layouts/HostLayout.astro'
+import { supabase } from '../../../lib/supabase'
+
+const userId = 'demo' // TODO: sesión real
+
+let error = ''
+let step = 1
+
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData()
+  const action = form.get('action')?.toString()
+
+  if (action === 'create') {
+    const name        = form.get('name')?.toString() ?? ''
+    const description = form.get('description')?.toString() ?? ''
+    const city        = form.get('city')?.toString() ?? ''
+    const address     = form.get('address')?.toString() ?? ''
+    const rules       = form.get('rules')?.toString() ?? ''
+    const publish     = form.get('publish') === 'true'
+
+    // Generar slug
+    const { data: slugData } = await supabase.rpc('generate_slug', { name })
+    const slug = slugData ?? name.toLowerCase().replace(/\s+/g, '-')
+
+    const { data: camping, error: dbError } = await supabase
+      .from('campings')
+      .insert({
+        owner_id:    userId,
+        name,
+        slug,
+        description,
+        city,
+        address,
+        rules,
+        status: publish ? 'active' : 'draft',
+      })
+      .select('id')
+      .single()
+
+    if (dbError) {
+      error = 'Error al crear el camping. Intenta nuevamente.'
+    } else {
+      return Astro.redirect(`/host/campings/${camping.id}?created=1`)
+    }
+  }
+}
+---
+
+<HostLayout title="Nuevo Camping" active="/host/campings">
+  <div class="max-w-2xl mx-auto">
+
+    <a href="/host/campings" class="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-800 mb-6 transition">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Volver a mis campings
+    </a>
+
+    <!-- Pasos -->
+    <div class="flex items-center gap-3 mb-8">
+      {['Información', 'Ubicación', 'Reglas'].map((label, i) => (
+        <div class="flex items-center gap-2">
+          <div class={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${i === 0 ? 'text-white' : 'text-gray-400 bg-gray-100'}`}
+               style={i === 0 ? 'background-color:#6D4C3D' : ''}>
+            {i + 1}
+          </div>
+          <span class={`text-sm ${i === 0 ? 'font-semibold text-gray-900' : 'text-gray-400'}`}>{label}</span>
+          {i < 2 && <span class="text-gray-200 mx-1">—</span>}
+        </div>
+      ))}
+    </div>
+
+    {error && (
+      <div class="mb-6 px-4 py-3 rounded-xl text-sm bg-red-50 text-red-700 border border-red-100">
+        {error}
+      </div>
+    )}
+
+    <form method="POST" class="space-y-6">
+      <input type="hidden" name="action" value="create" />
+
+      <div class="bg-white rounded-2xl border p-6 space-y-5" style="border-color:#e8ddd4">
+        <h2 class="font-semibold text-gray-900 text-base" style="font-family:'Playfair Display',serif">
+          Información básica
+        </h2>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1.5" for="name">
+            Nombre del camping <span class="text-red-400">*</span>
+          </label>
+          <input id="name" name="name" type="text" required placeholder="Ej: Camping Río Claro"
+            class="w-full px-4 py-3 rounded-xl border text-sm outline-none transition focus:ring-2 placeholder:text-gray-400"
+            style="border-color:#D9C3A5;focus:border-color:#6D4C3D" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1.5" for="description">
+            Descripción
+          </label>
+          <textarea id="description" name="description" rows="4"
+            placeholder="Describe tu camping: entorno, ambiente, qué lo hace especial..."
+            class="w-full px-4 py-3 rounded-xl border text-sm outline-none transition resize-none placeholder:text-gray-400"
+            style="border-color:#D9C3A5"></textarea>
+          <p class="text-xs text-gray-400 mt-1">Una buena descripción atrae más reservas.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border p-6 space-y-5" style="border-color:#e8ddd4">
+        <h2 class="font-semibold text-gray-900 text-base" style="font-family:'Playfair Display',serif">
+          Ubicación
+        </h2>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1.5" for="city">Ciudad / Comuna</label>
+            <input id="city" name="city" type="text" placeholder="Ej: Pucón"
+              class="w-full px-4 py-3 rounded-xl border text-sm outline-none transition placeholder:text-gray-400"
+              style="border-color:#D9C3A5" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1.5" for="address">Dirección o referencia</label>
+            <input id="address" name="address" type="text" placeholder="Ruta 5 Sur, km 780"
+              class="w-full px-4 py-3 rounded-xl border text-sm outline-none transition placeholder:text-gray-400"
+              style="border-color:#D9C3A5" />
+          </div>
+        </div>
+
+        <p class="text-xs text-gray-400">
+          El pin exacto en el mapa podrás configurarlo después de crear el camping.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl border p-6 space-y-5" style="border-color:#e8ddd4">
+        <h2 class="font-semibold text-gray-900 text-base" style="font-family:'Playfair Display',serif">
+          Reglas del camping
+        </h2>
+        <textarea id="rules" name="rules" rows="3"
+          placeholder="Ej: No mascotas, silencio desde las 23hrs, no fogatas en verano..."
+          class="w-full px-4 py-3 rounded-xl border text-sm outline-none transition resize-none placeholder:text-gray-400"
+          style="border-color:#D9C3A5"></textarea>
+      </div>
+
+      <!-- Acciones -->
+      <div class="flex flex-col sm:flex-row gap-3">
+        <button type="submit" name="publish" value="false"
+          class="flex-1 py-3.5 rounded-xl text-sm font-semibold border transition hover:bg-gray-50"
+          style="border-color:#D9C3A5;color:#6D4C3D">
+          Guardar borrador
+        </button>
+        <button type="submit" name="publish" value="true"
+          class="flex-1 py-3.5 rounded-xl text-white text-sm font-semibold transition hover:opacity-90"
+          style="background-color:#6D4C3D">
+          Publicar camping
+        </button>
+      </div>
+    </form>
+  </div>
+</HostLayout>

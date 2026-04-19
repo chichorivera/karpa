@@ -1,0 +1,138 @@
+---
+import HostLayout from '../../layouts/HostLayout.astro'
+import { supabase } from '../../lib/supabase'
+
+// TODO: reemplazar con sesión real del middleware
+const userId = 'demo'
+
+const { data: campings } = await supabase
+  .from('campings')
+  .select('id, name, status')
+  .eq('owner_id', userId)
+
+const { data: bookings } = await supabase
+  .from('bookings')
+  .select('id, status, total_price, created_at')
+  .eq('camping_id', campings?.map(c => c.id) ?? [])
+
+const bookingStatusColors: Record<string, string> = {
+  pending:   '#F27C38',
+  confirmed: '#2E593F',
+  cancelled: '#ef4444',
+  completed: '#6b7280',
+}
+
+const totalCampings  = campings?.length ?? 0
+const activeBookings = bookings?.filter(b => b.status === 'confirmed').length ?? 0
+const pendingBookings = bookings?.filter(b => b.status === 'pending').length ?? 0
+const revenue = bookings
+  ?.filter(b => b.status === 'confirmed' || b.status === 'completed')
+  .reduce((sum, b) => sum + Number(b.total_price), 0) ?? 0
+
+const stats = [
+  { label: 'Campings activos', value: totalCampings, color: '#2E593F', bg: '#e8f3ec' },
+  { label: 'Reservas confirmadas', value: activeBookings, color: '#6D4C3D', bg: '#f3ece8' },
+  { label: 'Reservas pendientes', value: pendingBookings, color: '#F27C38', bg: '#fef0e6' },
+  { label: 'Ingresos totales', value: `$${revenue.toLocaleString('es-CL')}`, color: '#2E593F', bg: '#e8f3ec' },
+]
+---
+
+<HostLayout title="Dashboard" active="/host/dashboard">
+  <!-- Stats -->
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+    {stats.map(s => (
+      <div class="bg-white rounded-2xl p-5 border" style="border-color:#e8ddd4">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={`background-color:${s.bg}`}>
+          <div class="w-4 h-4 rounded-full" style={`background-color:${s.color}`}></div>
+        </div>
+        <p class="text-2xl font-bold text-gray-900 mb-0.5">{s.value}</p>
+        <p class="text-xs text-gray-500 font-medium">{s.label}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="grid lg:grid-cols-2 gap-6">
+    <!-- Mis campings -->
+    <div class="bg-white rounded-2xl border overflow-hidden" style="border-color:#e8ddd4">
+      <div class="px-6 py-4 border-b flex items-center justify-between" style="border-color:#e8ddd4">
+        <h2 class="font-semibold text-gray-900">Mis Campings</h2>
+        <a href="/host/campings" class="text-xs font-medium hover:underline" style="color:#6D4C3D">Ver todos</a>
+      </div>
+      {!campings?.length ? (
+        <div class="px-6 py-10 text-center">
+          <p class="text-gray-400 text-sm mb-4">Aún no tienes campings publicados</p>
+          <a href="/host/campings/new"
+             class="inline-block px-4 py-2 rounded-xl text-white text-sm font-semibold"
+             style="background-color:#F27C38">
+            Crear mi primer camping
+          </a>
+        </div>
+      ) : (
+        <ul class="divide-y" style="border-color:#f0e8e0">
+          {campings.slice(0, 5).map(c => (
+            <li class="px-6 py-4 flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-900">{c.name}</p>
+                <p class="text-xs text-gray-400 mt-0.5 capitalize">{c.status}</p>
+              </div>
+              <a href={`/host/campings/${c.id}`}
+                 class="text-xs font-medium px-3 py-1.5 rounded-lg hover:opacity-80 transition"
+                 style="background-color:#F4E8D4;color:#6D4C3D">
+                Editar
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+
+    <!-- Últimas reservas -->
+    <div class="bg-white rounded-2xl border overflow-hidden" style="border-color:#e8ddd4">
+      <div class="px-6 py-4 border-b flex items-center justify-between" style="border-color:#e8ddd4">
+        <h2 class="font-semibold text-gray-900">Últimas Reservas</h2>
+        <a href="/host/bookings" class="text-xs font-medium hover:underline" style="color:#6D4C3D">Ver todas</a>
+      </div>
+      {!bookings?.length ? (
+        <div class="px-6 py-10 text-center">
+          <p class="text-gray-400 text-sm">Aún no tienes reservas</p>
+        </div>
+      ) : (
+        <ul class="divide-y" style="border-color:#f0e8e0">
+          {bookings.slice(0, 5).map(b => (
+            <li class="px-6 py-4 flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-900">
+                  ${Number(b.total_price).toLocaleString('es-CL')}
+                </p>
+                <p class="text-xs text-gray-400 mt-0.5">
+                  {new Date(b.created_at).toLocaleDateString('es-CL')}
+                </p>
+              </div>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full text-white capitalize"
+                    style={`background-color:${bookingStatusColors[b.status] ?? '#6b7280'}`}>
+                {b.status}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </div>
+
+  <!-- CTA si no hay campings -->
+  {!campings?.length && (
+    <div class="mt-6 rounded-2xl p-8 text-center" style="background-color:#2E593F">
+      <h3 class="text-xl font-bold text-white mb-2" style="font-family:'Playfair Display',serif">
+        ¡Publica tu primer camping!
+      </h3>
+      <p class="text-white/70 text-sm mb-5">
+        Llega a miles de viajeros que buscan experiencias únicas en la naturaleza.
+      </p>
+      <a href="/host/campings/new"
+         class="inline-block px-6 py-3 rounded-xl text-sm font-semibold transition hover:opacity-90"
+         style="background-color:#F27C38;color:white">
+        Crear camping ahora
+      </a>
+    </div>
+  )}
+</HostLayout>
