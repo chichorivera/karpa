@@ -50,9 +50,9 @@ const html = `<!DOCTYPE html>
       padding: 80px 40px;
       text-align: center;
     }
-    .cover h1 { font-size: 3rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -1px; }
-    .cover .subtitle { font-size: 1.2rem; opacity: 0.8; margin-bottom: 8px; }
-    .cover .date { font-size: 0.85rem; opacity: 0.5; }
+    .cover img.logo { height: 52px; width: auto; margin-bottom: 20px; }
+    .cover .subtitle { font-size: 1.2rem; opacity: 0.8; margin-bottom: 8px; color: white; }
+    .cover .date { font-size: 0.85rem; opacity: 0.5; color: white; }
     .toc-wrap { background: white; border-bottom: 1px solid var(--crema); }
     .toc { max-width: 900px; margin: 0 auto; padding: 24px 32px; }
     .toc h2 { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--madera); margin-bottom: 12px; }
@@ -141,8 +141,10 @@ const html = `<!DOCTYPE html>
 
 <!-- PORTADA -->
 <div class="cover">
-  <div style="font-size:2.5rem;margin-bottom:16px">🏕️</div>
-  <h1>Karpa</h1>
+  <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:24px">
+    <img src="${BASE_URL}/favicon.png" alt="" style="height:40px;width:40px;object-fit:contain" />
+    <img src="${BASE_URL}/logo-karpa-blanco.png" alt="Karpa" class="logo" style="margin-bottom:0" />
+  </div>
   <p class="subtitle">Tutorial completo de la plataforma — MVP v1.0</p>
   <p class="date">Generado el ${new Date().toLocaleDateString('es-CL', { dateStyle: 'long' })}</p>
 </div>
