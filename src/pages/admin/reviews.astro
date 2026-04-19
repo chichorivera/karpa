@@ -1,0 +1,52 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro'
+import { supabaseAdmin } from '../../lib/supabase'
+
+let message = ''
+
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData()
+  const id   = form.get('id')?.toString()
+  if (id) {
+    await supabaseAdmin.from('reviews').delete().eq('id', id)
+    message = 'Reseña eliminada.'
+  }
+}
+
+const { data: reviews } = await supabaseAdmin
+  .from('reviews')
+  .select('id, rating, comment, created_at, campings(name), profiles!traveler_id(full_name)')
+  .order('created_at', { ascending: false })
+  .limit(100)
+---
+
+<AdminLayout title="Reseñas" active="/admin/reviews">
+  {message && (
+    <div class="mb-4 px-4 py-3 rounded-xl text-sm bg-green-50 text-green-700 border border-green-100">{message}</div>
+  )}
+
+  <div class="space-y-3">
+    {!(reviews ?? []).length ? (
+      <p class="text-gray-400 text-sm text-center py-10">No hay reseñas aún.</p>
+    ) : (reviews ?? []).map((r: any) => (
+      <div class="bg-white border rounded-2xl p-5 flex items-start justify-between gap-4" style="border-color:#e8ddd4">
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            <p class="text-sm font-semibold text-gray-900">{r.profiles?.full_name ?? '—'}</p>
+            <span class="text-xs text-gray-400">→ {r.campings?.name}</span>
+          </div>
+          <p class="text-sm mb-1">{'⭐'.repeat(r.rating)}</p>
+          {r.comment && <p class="text-sm text-gray-600 leading-relaxed">{r.comment}</p>}
+          <p class="text-xs text-gray-300 mt-1">{new Date(r.created_at).toLocaleDateString('es-CL')}</p>
+        </div>
+        <form method="POST" class="shrink-0"
+              onsubmit="return confirm('¿Eliminar esta reseña?')">
+          <input type="hidden" name="id" value={r.id} />
+          <button class="text-xs font-semibold px-3 py-1.5 rounded-lg hover:opacity-80" style="background-color:#fee2e2;color:#ef4444">
+            Eliminar
+          </button>
+        </form>
+      </div>
+    ))}
+  </div>
+</AdminLayout>

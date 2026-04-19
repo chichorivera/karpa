@@ -1,0 +1,112 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro'
+import { supabaseAdmin } from '../../lib/supabase'
+
+const [{ count: totalUsers }, { count: totalCampings }, { count: totalBookings }, { count: pendingCampings }] =
+  await Promise.all([
+    supabaseAdmin.from('profiles').select('*', { count: 'exact', head: true }),
+    supabaseAdmin.from('campings').select('*', { count: 'exact', head: true }).eq('status', 'active'),
+    supabaseAdmin.from('bookings').select('*', { count: 'exact', head: true }),
+    supabaseAdmin.from('campings').select('*', { count: 'exact', head: true }).eq('status', 'draft'),
+  ])
+
+const { data: recentBookings } = await supabaseAdmin
+  .from('bookings')
+  .select('id, total_price, status, created_at, campings(name), profiles!traveler_id(full_name)')
+  .order('created_at', { ascending: false })
+  .limit(8)
+
+const { data: recentCampings } = await supabaseAdmin
+  .from('campings')
+  .select('id, name, city, status, created_at')
+  .order('created_at', { ascending: false })
+  .limit(5)
+
+const stats = [
+  { label: 'Usuarios',         value: totalUsers ?? 0,       color: '#6D4C3D', bg: '#f3ece8' },
+  { label: 'Campings activos', value: totalCampings ?? 0,    color: '#2E593F', bg: '#e8f3ec' },
+  { label: 'Total reservas',   value: totalBookings ?? 0,    color: '#F27C38', bg: '#fef0e6' },
+  { label: 'Pendientes aprob.', value: pendingCampings ?? 0, color: '#6D4C3D', bg: '#f3ece8' },
+]
+
+const statusColor: Record<string, string> = {
+  pending: '#F27C38', confirmed: '#2E593F', cancelled: '#ef4444', completed: '#6b7280',
+}
+const statusLabel: Record<string, string> = {
+  pending: 'Pendiente', confirmed: 'Confirmada', cancelled: 'Cancelada', completed: 'Completada',
+}
+const campingStatusColor: Record<string, string> = { draft: '#D9C3A5', active: '#2E593F', paused: '#F27C38' }
+const campingStatusLabel: Record<string, string> = { draft: 'Borrador', active: 'Activo', paused: 'Pausado' }
+---
+
+<AdminLayout title="Dashboard" active="/admin/dashboard">
+
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+    {stats.map(s => (
+      <div class="bg-white rounded-2xl p-5 border" style="border-color:#e8ddd4">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={`background-color:${s.bg}`}>
+          <div class="w-4 h-4 rounded-full" style={`background-color:${s.color}`}></div>
+        </div>
+        <p class="text-2xl font-bold text-gray-900 mb-0.5">{s.value}</p>
+        <p class="text-xs text-gray-500 font-medium">{s.label}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="grid lg:grid-cols-2 gap-6">
+
+    <!-- Últimas reservas -->
+    <div class="bg-white rounded-2xl border overflow-hidden" style="border-color:#e8ddd4">
+      <div class="px-6 py-4 border-b flex items-center justify-between" style="border-color:#e8ddd4">
+        <h2 class="font-semibold text-gray-900">Últimas reservas</h2>
+        <a href="/admin/bookings" class="text-xs font-medium hover:underline" style="color:#6D4C3D">Ver todas</a>
+      </div>
+      <ul class="divide-y" style="divide-color:#f0e8e0">
+        {(recentBookings ?? []).map((b: any) => (
+          <li class="px-6 py-3.5 flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-900">{b.profiles?.full_name ?? '—'}</p>
+              <p class="text-xs text-gray-400">{b.campings?.name}</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <p class="text-sm font-bold" style="color:#6D4C3D">${Number(b.total_price).toLocaleString('es-CL')}</p>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded-full text-white"
+                    style={`background-color:${statusColor[b.status]}`}>
+                {statusLabel[b.status]}
+              </span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Campings recientes -->
+    <div class="bg-white rounded-2xl border overflow-hidden" style="border-color:#e8ddd4">
+      <div class="px-6 py-4 border-b flex items-center justify-between" style="border-color:#e8ddd4">
+        <h2 class="font-semibold text-gray-900">Campings recientes</h2>
+        <a href="/admin/campings" class="text-xs font-medium hover:underline" style="color:#6D4C3D">Ver todos</a>
+      </div>
+      <ul class="divide-y" style="divide-color:#f0e8e0">
+        {(recentCampings ?? []).map((c: any) => (
+          <li class="px-6 py-3.5 flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-900">{c.name}</p>
+              <p class="text-xs text-gray-400">{c.city}</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded-full text-white"
+                    style={`background-color:${campingStatusColor[c.status]}`}>
+                {campingStatusLabel[c.status]}
+              </span>
+              <a href={`/admin/campings?id=${c.id}`}
+                 class="text-xs font-medium px-2.5 py-1 rounded-lg hover:opacity-80"
+                 style="background-color:#F4E8D4;color:#6D4C3D">
+                Ver
+              </a>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</AdminLayout>

@@ -1,0 +1,46 @@
+---
+import PublicLayout from '../../../layouts/PublicLayout.astro'
+import Navbar from '../../../components/layout/Navbar.astro'
+
+const reason = Astro.url.searchParams.get('reason') ?? ''
+
+const messages: Record<string, string> = {
+  rejected:  'Tu pago fue rechazado por Webpay. Verifica tus datos e intenta nuevamente.',
+  abandoned: 'Cancelaste el proceso de pago. Tu reserva no fue confirmada.',
+  no_token:  'No se recibió respuesta de Webpay. Intenta nuevamente.',
+  error:     'Ocurrió un error inesperado. Contáctanos si el problema persiste.',
+  unknown:   'Ocurrió un problema con el pago.',
+}
+const msg = messages[reason] ?? messages.unknown
+---
+
+<PublicLayout title="Pago no completado">
+  <Navbar />
+  <main class="pt-24 pb-16 max-w-lg mx-auto px-4 text-center">
+
+    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
+         style="background-color:#fee2e2">
+      <svg class="w-10 h-10 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </div>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-2" style="font-family:'Playfair Display',serif">
+      Pago no completado
+    </h1>
+    <p class="text-gray-500 text-sm mb-8">{msg}</p>
+
+    <div class="flex flex-col sm:flex-row gap-3">
+      <a href="/search"
+         class="flex-1 py-3 rounded-xl text-sm font-semibold border transition hover:bg-gray-50"
+         style="border-color:#D9C3A5;color:#6D4C3D">
+        Volver a buscar
+      </a>
+      <a href="/"
+         class="flex-1 py-3 rounded-xl text-white text-sm font-semibold transition hover:opacity-90"
+         style="background-color:#6D4C3D">
+        Ir al inicio
+      </a>
+    </div>
+  </main>
+</PublicLayout>

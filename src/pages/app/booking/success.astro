@@ -1,0 +1,76 @@
+---
+import PublicLayout from '../../../layouts/PublicLayout.astro'
+import Navbar from '../../../components/layout/Navbar.astro'
+import { supabase } from '../../../lib/supabase'
+
+const bookingId = Astro.url.searchParams.get('id') ?? ''
+const { data: booking } = bookingId
+  ? await supabase
+      .from('bookings')
+      .select('id, check_in, check_out, guests, total_price, units(name, type), campings(name, city, slug)')
+      .eq('id', bookingId)
+      .single()
+  : { data: null }
+
+const b = booking as any
+---
+
+<PublicLayout title="Reserva confirmada">
+  <Navbar />
+  <main class="pt-24 pb-16 max-w-lg mx-auto px-4 text-center">
+
+    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
+         style="background-color:#e8f3ec">
+      <svg class="w-10 h-10" style="color:#2E593F" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+    </div>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-2" style="font-family:'Playfair Display',serif">
+      ¡Reserva confirmada!
+    </h1>
+    <p class="text-gray-500 text-sm mb-8">
+      Tu pago fue procesado. Te enviamos una confirmación por email.
+    </p>
+
+    {b && (
+      <div class="border rounded-2xl p-6 text-left space-y-3 mb-8" style="border-color:#e8ddd4;background-color:#faf8f5">
+        <h2 class="font-semibold text-gray-900">{b.campings?.name}</h2>
+        <p class="text-sm text-gray-500">{b.units?.name} · {b.campings?.city}</p>
+        <div class="border-t pt-3 space-y-2 text-sm" style="border-color:#e8ddd4">
+          <div class="flex justify-between">
+            <span class="text-gray-500">Check-in</span>
+            <span class="font-medium">{new Date(b.check_in).toLocaleDateString('es-CL', { dateStyle: 'long' })}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-500">Check-out</span>
+            <span class="font-medium">{new Date(b.check_out).toLocaleDateString('es-CL', { dateStyle: 'long' })}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-500">Huéspedes</span>
+            <span class="font-medium">{b.guests}</span>
+          </div>
+          <div class="flex justify-between border-t pt-2" style="border-color:#e8ddd4">
+            <span class="font-semibold">Total pagado</span>
+            <span class="font-bold text-base" style="color:#F27C38">
+              ${Number(b.total_price).toLocaleString('es-CL')}
+            </span>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <div class="flex flex-col sm:flex-row gap-3">
+      <a href="/app/bookings"
+         class="flex-1 py-3 rounded-xl text-sm font-semibold border transition hover:bg-gray-50"
+         style="border-color:#D9C3A5;color:#6D4C3D">
+        Ver mis reservas
+      </a>
+      <a href="/search"
+         class="flex-1 py-3 rounded-xl text-white text-sm font-semibold transition hover:opacity-90"
+         style="background-color:#6D4C3D">
+        Explorar más campings
+      </a>
+    </div>
+  </main>
+</PublicLayout>

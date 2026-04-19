@@ -1,0 +1,107 @@
+---
+import TravelerLayout from '../../layouts/TravelerLayout.astro'
+import { supabase } from '../../lib/supabase'
+
+const travelerId = 'demo' // TODO: sesión real
+
+const { data: bookings } = await supabase
+  .from('bookings')
+  .select('id, check_in, check_out, status, total_price, units(name), campings(name, city, camping_images(url, is_cover))')
+  .eq('traveler_id', travelerId)
+  .order('check_in', { ascending: true })
+
+const today    = new Date().toISOString().split('T')[0]
+const upcoming = (bookings ?? []).filter((b: any) => b.check_in >= today && b.status === 'confirmed')
+const past     = (bookings ?? []).filter((b: any) => b.check_out < today || b.status === 'completed')
+
+const statusColor: Record<string, string> = {
+  pending: '#F27C38', confirmed: '#2E593F', cancelled: '#ef4444', completed: '#6b7280',
+}
+const statusLabel: Record<string, string> = {
+  pending: 'Pendiente', confirmed: 'Confirmada', cancelled: 'Cancelada', completed: 'Completada',
+}
+---
+
+<TravelerLayout title="Dashboard" active="/app/dashboard">
+
+  {upcoming.length === 0 && past.length === 0 ? (
+    <div class="max-w-md mx-auto text-center py-16">
+      <p class="text-6xl mb-4">🏕️</p>
+      <h2 class="text-xl font-bold mb-2 text-gray-900" style="font-family:'Playfair Display',serif">
+        ¡Empieza tu aventura!
+      </h2>
+      <p class="text-gray-500 text-sm mb-6">Aún no tienes reservas. Descubre campings increíbles.</p>
+      <a href="/search" class="inline-block px-6 py-3 rounded-xl text-white text-sm font-semibold hover:opacity-90 transition" style="background-color:#6D4C3D">
+        Buscar campings
+      </a>
+    </div>
+  ) : (
+    <div class="space-y-8">
+
+      {upcoming.length > 0 && (
+        <div>
+          <h2 class="text-lg font-bold text-gray-900 mb-4" style="font-family:'Playfair Display',serif">
+            Próximas escapadas
+          </h2>
+          <div class="grid sm:grid-cols-2 gap-4">
+            {upcoming.map((b: any) => {
+              const cover = b.campings?.camping_images?.find((i: any) => i.is_cover) ?? b.campings?.camping_images?.[0]
+              return (
+                <a href={`/app/bookings/${b.id}`}
+                   class="group flex gap-4 bg-white border rounded-2xl p-4 hover:shadow-md transition-shadow"
+                   style="border-color:#e8ddd4">
+                  <div class="w-20 h-20 rounded-xl overflow-hidden shrink-0" style="background-color:#F4E8D4">
+                    {cover ? (
+                      <img src={cover.url} alt={b.campings?.name} class="w-full h-full object-cover" />
+                    ) : (
+                      <div class="w-full h-full flex items-center justify-center text-2xl opacity-40">⛺</div>
+                    )}
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-xs text-gray-400">{b.campings?.city}</p>
+                    <h3 class="font-semibold text-sm text-gray-900 group-hover:text-[#6D4C3D] transition truncate">{b.campings?.name}</h3>
+                    <p class="text-xs text-gray-500 mt-0.5">{b.units?.name}</p>
+                    <p class="text-xs font-medium mt-1" style="color:#2E593F">
+                      {new Date(b.check_in).toLocaleDateString('es-CL', { day: 'numeric', month: 'short' })}
+                      {' → '}
+                      {new Date(b.check_out).toLocaleDateString('es-CL', { day: 'numeric', month: 'short' })}
+                    </p>
+                  </div>
+                </a>
+              )
+            })}
+          </div>
+        </div>
+      )}
+
+      {past.length > 0 && (
+        <div>
+          <h2 class="text-lg font-bold text-gray-900 mb-4" style="font-family:'Playfair Display',serif">
+            Historial
+          </h2>
+          <div class="space-y-3">
+            {past.slice(0, 5).map((b: any) => (
+              <a href={`/app/bookings/${b.id}`}
+                 class="flex items-center justify-between bg-white border rounded-2xl p-4 hover:shadow-sm transition"
+                 style="border-color:#e8ddd4">
+                <div>
+                  <p class="text-sm font-medium text-gray-900">{b.campings?.name}</p>
+                  <p class="text-xs text-gray-400 mt-0.5">
+                    {new Date(b.check_in).toLocaleDateString('es-CL')} · {b.units?.name}
+                  </p>
+                </div>
+                <div class="flex items-center gap-3">
+                  <p class="text-sm font-bold" style="color:#6D4C3D">${Number(b.total_price).toLocaleString('es-CL')}</p>
+                  <span class="text-xs font-semibold px-2.5 py-1 rounded-full text-white"
+                        style={`background-color:${statusColor[b.status]}`}>
+                    {statusLabel[b.status]}
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  )}
+</TravelerLayout>
