@@ -1,0 +1,152 @@
+---
+import HostLayout from '../../../../layouts/HostLayout.astro'
+import { getSessionUser, supabaseAdmin } from '../../../../lib/supabase'
+
+const { user } = await getSessionUser(Astro.cookies)
+if (!user) return Astro.redirect('/auth/login')
+
+const { id: campingId } = Astro.params
+
+const { data: camping } = await supabaseAdmin
+  .from('campings').select('id, name').eq('id', campingId!).eq('owner_id', user.id).single()
+
+if (!camping) return Astro.redirect('/host/campings')
+
+let error = ''
+let success = ''
+
+if (Astro.request.method === 'POST') {
+  const form   = await Astro.request.formData()
+  const action = form.get('action')?.toString()
+
+  if (action === 'create') {
+    const amenitiesRaw = form.get('amenities')?.toString() ?? ''
+    const amenities    = amenitiesRaw.split(',').map(s => s.trim()).filter(Boolean)
+    const { error: e } = await supabaseAdmin.from('units').insert({
+      camping_id:      campingId,
+      name:            form.get('name')?.toString(),
+      type:            form.get('type')?.toString(),
+      capacity:        Number(form.get('capacity')),
+      price_per_night: Number(form.get('price_per_night')),
+      description:     form.get('description')?.toString(),
+      amenities,
+    })
+    if (e) error = 'Error al crear la parcela.'
+    else success = 'Parcela creada exitosamente.'
+  }
+
+  if (action === 'toggle') {
+    const unitId    = form.get('unitId')?.toString()
+    const newStatus = form.get('newStatus')?.toString()
+    await supabaseAdmin.from('units').update({ status: newStatus }).eq('id', unitId!)
+    success = 'Estado actualizado.'
+  }
+}
+
+const { data: units } = await supabaseAdmin
+  .from('units')
+  .select('id, name, type, capacity, price_per_night, amenities, status')
+  .eq('camping_id', campingId!)
+  .order('created_at')
+
+const typeLabel: Record<string, string> = {
+  tent: 'Carpa', cabin: 'Cabaña', glamping: 'Glamping', camper: 'Camper', other: 'Otro',
+}
+---
+
+<HostLayout title={`Parcelas — ${camping.name}`} active="/host/campings">
+  <div class="max-w-3xl mx-auto">
+    <a href={`/host/campings/${campingId}`} class="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-800 mb-6 transition">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Volver a {camping.name}
+    </a>
+
+    {success && <div class="mb-4 px-4 py-3 rounded-xl text-sm bg-green-50 text-green-700 border border-green-100">{success}</div>}
+    {error && <div class="mb-4 px-4 py-3 rounded-xl text-sm bg-red-50 text-red-700 border border-red-100">{error}</div>}
+
+    <!-- Lista de parcelas -->
+    {units?.length ? (
+      <div class="space-y-3 mb-8">
+        {units.map((u: any) => (
+          <div class="bg-white border rounded-2xl p-5 flex items-center gap-4" style="border-color:#e8ddd4">
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-semibold px-2 py-0.5 rounded-full text-white" style="background-color:#2E593F">
+                  {typeLabel[u.type] ?? u.type}
+                </span>
+                <h3 class="font-semibold text-sm text-gray-900 truncate">{u.name}</h3>
+              </div>
+              <p class="text-xs text-gray-500">{u.capacity} pers. · ${Number(u.price_per_night).toLocaleString('es-CL')}/noche</p>
+              {Array.isArray(u.amenities) && u.amenities.length > 0 && (
+                <p class="text-xs text-gray-400 mt-1">{u.amenities.join(' · ')}</p>
+              )}
+            </div>
+            <form method="POST" class="shrink-0">
+              <input type="hidden" name="action" value="toggle" />
+              <input type="hidden" name="unitId" value={u.id} />
+              <input type="hidden" name="newStatus" value={u.status === 'active' ? 'inactive' : 'active'} />
+              <button class={`text-xs font-semibold px-3 py-1.5 rounded-xl transition hover:opacity-80 ${u.status === 'active' ? '' : 'text-white'}`}
+                      style={u.status === 'active' ? 'background-color:#fef0e6;color:#F27C38' : 'background-color:#2E593F'}>
+                {u.status === 'active' ? 'Pausar' : 'Activar'}
+              </button>
+            </form>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <p class="text-gray-400 text-sm text-center py-8 mb-6">Aún no hay parcelas. Agrega la primera.</p>
+    )}
+
+    <!-- Formulario nueva parcela -->
+    <div class="bg-white border rounded-2xl p-6" style="border-color:#e8ddd4">
+      <h2 class="font-semibold text-gray-900 mb-5" style="font-family:'Playfair Display',serif">Agregar parcela</h2>
+      <form method="POST" class="space-y-4">
+        <input type="hidden" name="action" value="create" />
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1.5">Nombre <span class="text-red-400">*</span></label>
+            <input name="name" type="text" required placeholder="Ej: Parcela A1"
+              class="w-full px-4 py-3 rounded-xl border text-sm outline-none" style="border-color:#D9C3A5" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1.5">Tipo</label>
+            <select name="type" class="w-full px-4 py-3 rounded-xl border text-sm outline-none" style="border-color:#D9C3A5">
+              <option value="tent">Carpa</option>
+              <option value="cabin">Cabaña</option>
+              <option value="glamping">Glamping</option>
+              <option value="camper">Camper</option>
+              <option value="other">Otro</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1.5">Capacidad (personas)</label>
+            <input name="capacity" type="number" min="1" max="30" value="2"
+              class="w-full px-4 py-3 rounded-xl border text-sm outline-none" style="border-color:#D9C3A5" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1.5">Precio por noche ($CLP)</label>
+            <input name="price_per_night" type="number" min="1000" step="1000" required placeholder="35000"
+              class="w-full px-4 py-3 rounded-xl border text-sm outline-none" style="border-color:#D9C3A5" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1.5">Descripción</label>
+          <input name="description" type="text" placeholder="Opcional"
+            class="w-full px-4 py-3 rounded-xl border text-sm outline-none" style="border-color:#D9C3A5" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1.5">Amenities (separados por coma)</label>
+          <input name="amenities" type="text" placeholder="WiFi, Baño privado, Electricidad, Agua caliente"
+            class="w-full px-4 py-3 rounded-xl border text-sm outline-none placeholder:text-gray-400" style="border-color:#D9C3A5" />
+        </div>
+        <button type="submit"
+          class="w-full py-3.5 rounded-xl text-white text-sm font-semibold hover:opacity-90 transition"
+          style="background-color:#6D4C3D">
+          Agregar parcela
+        </button>
+      </form>
+    </div>
+  </div>
+</HostLayout>

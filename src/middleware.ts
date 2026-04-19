@@ -1,38 +1,31 @@
 import { defineMiddleware } from 'astro:middleware'
-import { createClient } from '@supabase/supabase-js'
+import { getSessionUser } from './lib/supabase'
 
-const ROLE_ROUTES: Record<string, string[]> = {
-  admin:    ['/admin'],
-  host:     ['/host'],
-  traveler: ['/app'],
+const ROLE_ROUTES: Record<string, string> = {
+  '/admin': 'admin',
+  '/host':  'host',
+  '/app':   'traveler',
 }
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const { pathname } = context.url
 
-  const protectedPrefix = Object.values(ROLE_ROUTES).flat().find(p => pathname.startsWith(p))
-  if (!protectedPrefix) return next()
+  const requiredRole = Object.entries(ROLE_ROUTES).find(([prefix]) =>
+    pathname.startsWith(prefix)
+  )?.[1]
 
-  const supabase = createClient(
-    import.meta.env.PUBLIC_SUPABASE_URL,
-    import.meta.env.PUBLIC_SUPABASE_ANON_KEY,
-  )
+  if (!requiredRole) return next()
 
-  const authHeader = context.request.headers.get('cookie') ?? ''
-  const { data: { user } } = await supabase.auth.getUser()
+  const { user, profile } = await getSessionUser(context.cookies)
 
-  if (!user) return context.redirect('/auth/login')
+  if (!user) return context.redirect(`/auth/login?next=${encodeURIComponent(pathname)}`)
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single()
+  // Viajeros pueden acceder a rutas /app aunque el role sea host o admin
+  if (requiredRole === 'traveler') {
+    return next()
+  }
 
-  const role = profile?.role as string
-  const allowedPrefix = ROLE_ROUTES[role] ?? []
-
-  if (!allowedPrefix.some(p => pathname.startsWith(p))) {
+  if (profile?.role !== requiredRole) {
     return context.redirect('/')
   }
 

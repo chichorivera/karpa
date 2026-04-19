@@ -1,0 +1,125 @@
+---
+import HostLayout from '../../../layouts/HostLayout.astro'
+import { getSessionUser, supabaseAdmin } from '../../../lib/supabase'
+
+const { user } = await getSessionUser(Astro.cookies)
+if (!user) return Astro.redirect('/auth/login')
+
+const { id } = Astro.params
+const created = Astro.url.searchParams.get('created') === '1'
+
+const { data: camping } = await supabaseAdmin
+  .from('campings')
+  .select('id, name, description, city, address, rules, status, lat, lng')
+  .eq('id', id!)
+  .eq('owner_id', user.id)
+  .single()
+
+if (!camping) return Astro.redirect('/host/campings')
+
+let error = ''
+let success = false
+
+if (Astro.request.method === 'POST') {
+  const form   = await Astro.request.formData()
+  const action = form.get('action')?.toString()
+
+  if (action === 'update') {
+    const { error: dbError } = await supabaseAdmin
+      .from('campings')
+      .update({
+        name:        form.get('name')?.toString(),
+        description: form.get('description')?.toString(),
+        city:        form.get('city')?.toString(),
+        address:     form.get('address')?.toString(),
+        rules:       form.get('rules')?.toString(),
+        status:      form.get('status')?.toString(),
+      })
+      .eq('id', id!)
+    if (dbError) error = 'Error al guardar los cambios.'
+    else success = true
+  }
+}
+---
+
+<HostLayout title="Editar Camping" active="/host/campings">
+  <div class="max-w-2xl mx-auto">
+    <a href="/host/campings" class="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-800 mb-6 transition">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Mis campings
+    </a>
+
+    {created && (
+      <div class="mb-6 px-4 py-3 rounded-xl text-sm bg-green-50 text-green-700 border border-green-100">
+        ✅ Camping creado. Ahora agrega <a href={`/host/campings/${id}/units`} class="font-semibold underline">parcelas o alojamientos</a>.
+      </div>
+    )}
+    {success && <div class="mb-6 px-4 py-3 rounded-xl text-sm bg-green-50 text-green-700 border border-green-100">Cambios guardados.</div>}
+    {error && <div class="mb-6 px-4 py-3 rounded-xl text-sm bg-red-50 text-red-700 border border-red-100">{error}</div>}
+
+    <form method="POST" class="space-y-6">
+      <input type="hidden" name="action" value="update" />
+
+      <div class="bg-white rounded-2xl border p-6 space-y-5" style="border-color:#e8ddd4">
+        <h2 class="font-semibold text-gray-900" style="font-family:'Playfair Display',serif">Información básica</h2>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1.5">Nombre</label>
+          <input name="name" type="text" required value={camping.name}
+            class="w-full px-4 py-3 rounded-xl border text-sm outline-none" style="border-color:#D9C3A5" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1.5">Descripción</label>
+          <textarea name="description" rows="4"
+            class="w-full px-4 py-3 rounded-xl border text-sm outline-none resize-none"
+            style="border-color:#D9C3A5">{camping.description}</textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1.5">Estado</label>
+          <select name="status" class="w-full px-4 py-3 rounded-xl border text-sm outline-none" style="border-color:#D9C3A5">
+            <option value="draft"  selected={camping.status === 'draft'}>Borrador</option>
+            <option value="active" selected={camping.status === 'active'}>Activo</option>
+            <option value="paused" selected={camping.status === 'paused'}>Pausado</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border p-6 space-y-4" style="border-color:#e8ddd4">
+        <h2 class="font-semibold text-gray-900" style="font-family:'Playfair Display',serif">Ubicación</h2>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1.5">Ciudad</label>
+            <input name="city" type="text" value={camping.city ?? ''}
+              class="w-full px-4 py-3 rounded-xl border text-sm outline-none" style="border-color:#D9C3A5" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1.5">Dirección</label>
+            <input name="address" type="text" value={camping.address ?? ''}
+              class="w-full px-4 py-3 rounded-xl border text-sm outline-none" style="border-color:#D9C3A5" />
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border p-6 space-y-4" style="border-color:#e8ddd4">
+        <h2 class="font-semibold text-gray-900" style="font-family:'Playfair Display',serif">Reglas</h2>
+        <textarea name="rules" rows="3"
+          class="w-full px-4 py-3 rounded-xl border text-sm outline-none resize-none"
+          style="border-color:#D9C3A5">{camping.rules}</textarea>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href={`/host/campings/${id}/units`}
+           class="flex-1 text-center py-3.5 rounded-xl text-sm font-semibold border transition hover:bg-gray-50"
+           style="border-color:#D9C3A5;color:#2E593F">
+          Gestionar parcelas →
+        </a>
+        <button type="submit"
+          class="flex-1 py-3.5 rounded-xl text-white text-sm font-semibold hover:opacity-90 transition"
+          style="background-color:#6D4C3D">
+          Guardar cambios
+        </button>
+      </div>
+    </form>
+  </div>
+</HostLayout>
