@@ -4,9 +4,6 @@
 -- Ejecutar en Supabase SQL Editor
 -- ================================================================
 
--- Desactivar trigger temporalmente para inserción directa
-ALTER TABLE auth.users DISABLE TRIGGER on_auth_user_created;
-
 DO $$
 DECLARE
   v_uid uuid;
@@ -349,8 +346,6 @@ VALUES (
   '{"sub":"0000000e-0000-4000-8000-000000000000","email":"viajero3@karpa.cl"}',
   'email', now(), now(), now()
 ) ON CONFLICT DO NOTHING;
-
--- (El trigger se reactiva fuera del DO block)
 
 -- ── PROFILES ──────────────────────────────────────────────────────
 INSERT INTO public.profiles (id, full_name, role)
@@ -2935,9 +2930,6 @@ INSERT INTO public.units (camping_id, name, type, capacity, price_per_night, ame
 VALUES (v_cid, 'Sitio Camper Motor Apagado 2', 'camper', 4, 14000, '["Electricidad 220V","Agua potable","Descarga grises"]', 'Segunda unidad disponible.', 'active');
 
 END $$;
-
--- Reactivar trigger
-ALTER TABLE auth.users ENABLE TRIGGER on_auth_user_created;
 
 -- Verificar
 SELECT count(*) AS campings FROM public.campings;

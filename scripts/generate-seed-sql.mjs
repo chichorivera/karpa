@@ -153,10 +153,6 @@ lines.push(`-- Contraseña de todos los usuarios: 1q2w3e4r`)
 lines.push(`-- Ejecutar en Supabase SQL Editor`)
 lines.push(`-- ================================================================`)
 lines.push(``)
-// Disable trigger BEFORE the DO block (DDL can't run inside DO)
-lines.push(`-- Desactivar trigger temporalmente para inserción directa`)
-lines.push(`ALTER TABLE auth.users DISABLE TRIGGER on_auth_user_created;`)
-lines.push(``)
 lines.push(`DO $$`)
 lines.push(`DECLARE`)
 lines.push(`  v_uid uuid;`)
@@ -194,8 +190,6 @@ for (const u of USERS) {
   lines.push(``)
 }
 
-lines.push(`-- (El trigger se reactiva fuera del DO block)`)
-lines.push(``)
 
 // Create profiles
 lines.push(`-- ── PROFILES ──────────────────────────────────────────────────────`)
@@ -247,9 +241,6 @@ for (const type of ['tent', 'cabin', 'glamping', 'camper']) {
 }
 
 lines.push(`END $$;`)
-lines.push(``)
-lines.push(`-- Reactivar trigger`)
-lines.push(`ALTER TABLE auth.users ENABLE TRIGGER on_auth_user_created;`)
 lines.push(``)
 lines.push(`-- Verificar`)
 lines.push(`SELECT count(*) AS campings FROM public.campings;`)
