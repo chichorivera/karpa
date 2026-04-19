@@ -1,0 +1,52 @@
+---
+import '../styles/global.css'
+
+interface Props {
+  title: string
+}
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} — Karpa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body class="antialiased min-h-screen flex">
+
+    <!-- Panel izquierdo: imagen + marca -->
+    <div class="hidden lg:flex lg:w-1/2 relative overflow-hidden" style="background-color:#2E593F">
+      <div class="absolute inset-0 bg-gradient-to-br from-[#2E593F] via-[#3a6b4d] to-[#6D4C3D] opacity-90"></div>
+      <div class="relative z-10 flex flex-col justify-between p-12 w-full">
+        <a href="/" class="flex items-center gap-3">
+          <img src="/logo-blanco.png" alt="Karpa" class="h-10" onerror="this.style.display='none'" />
+          <span class="text-white text-2xl font-bold" style="font-family:'Playfair Display',serif">Karpa</span>
+        </a>
+        <div>
+          <blockquote class="text-white/90 text-2xl leading-snug mb-6" style="font-family:'Playfair Display',serif">
+            "La naturaleza siempre lleva los colores del espíritu."
+          </blockquote>
+          <p class="text-white/60 text-sm">— Ralph Waldo Emerson</p>
+        </div>
+        <p class="text-white/50 text-sm">El marketplace de campings en Chile</p>
+      </div>
+    </div>
+
+    <!-- Panel derecho: formulario -->
+    <div class="flex-1 flex items-center justify-center px-6 py-12 bg-white">
+      <div class="w-full max-w-md">
+        <!-- Logo mobile -->
+        <div class="lg:hidden mb-10 text-center">
+          <a href="/" class="text-3xl font-bold" style="font-family:'Playfair Display',serif;color:#6D4C3D">Karpa</a>
+        </div>
+        <slot />
+      </div>
+    </div>
+
+  </body>
+</html>
