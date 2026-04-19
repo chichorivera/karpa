@@ -152,7 +152,8 @@ const unitTypeLabels: Record<string, string> = {
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<script define:vars={{ mapPoints }}>
+<script is:inline>
+  const mapPoints = {JSON.stringify(mapPoints)};
   const map = L.map('map').setView([-35.675, -71.543], 5)
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

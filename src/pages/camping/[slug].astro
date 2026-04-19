@@ -418,7 +418,8 @@ const unitTypeLabel: Record<string, string> = {
   <>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script define:vars={{ lat: camping.lat, lng: camping.lng, name: camping.name }}>
+    <script is:inline>
+      const lat = {camping.lat}, lng = {camping.lng}, name = {JSON.stringify(camping.name)};
       const map = L.map('detail-map', { zoomControl: false, scrollWheelZoom: false })
         .setView([lat, lng], 13)
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
