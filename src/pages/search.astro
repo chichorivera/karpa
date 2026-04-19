@@ -1,0 +1,192 @@
+---
+import PublicLayout from '../layouts/PublicLayout.astro'
+import Navbar from '../components/layout/Navbar.astro'
+import { supabase } from '../lib/supabase'
+
+const params   = Astro.url.searchParams
+const q        = params.get('q') ?? ''
+const type     = params.get('type') ?? ''
+const checkin  = params.get('checkin') ?? ''
+const checkout = params.get('checkout') ?? ''
+const maxPrice = params.get('max_price') ? Number(params.get('max_price')) : null
+
+let query = supabase
+  .from('campings')
+  .select(`id, name, slug, city, country, lat, lng,
+           camping_images(url, is_cover),
+           units(id, type, price_per_night, status),
+           reviews(rating)`)
+  .eq('status', 'active')
+
+if (q) {
+  query = query.or(`name.ilike.%${q}%,city.ilike.%${q}%`)
+}
+
+const { data: raw } = await query.limit(50)
+
+const results = (raw ?? [])
+  .map((c: any) => {
+    const activeUnits = (c.units ?? []).filter((u: any) => u.status === 'active')
+    const filtered    = type ? activeUnits.filter((u: any) => u.type === type) : activeUnits
+    if (!filtered.length) return null
+
+    const minPrice  = Math.min(...filtered.map((u: any) => Number(u.price_per_night)))
+    const cover     = c.camping_images?.find((i: any) => i.is_cover) ?? c.camping_images?.[0]
+    const ratings: number[] = c.reviews?.map((r: any) => r.rating) ?? []
+    const avg       = ratings.length
+      ? (ratings.reduce((a: number, b: number) => a + b, 0) / ratings.length).toFixed(1)
+      : null
+
+    if (maxPrice && minPrice > maxPrice) return null
+
+    return { ...c, coverUrl: cover?.url ?? null, minPrice, rating: avg, reviewCount: ratings.length }
+  })
+  .filter(Boolean)
+
+const mapPoints = results
+  .filter((c: any) => c.lat && c.lng)
+  .map((c: any) => ({ id: c.id, name: c.name, slug: c.slug, lat: c.lat, lng: c.lng, price: c.minPrice }))
+
+const unitTypeLabels: Record<string, string> = {
+  tent: 'Carpas', cabin: 'Cabañas', glamping: 'Glamping', camper: 'Camper', other: 'Otro',
+}
+---
+
+<PublicLayout title="Buscar campings">
+  <Navbar />
+
+  <div class="pt-16 flex h-[calc(100vh-4rem)] overflow-hidden">
+
+    <!-- Panel izquierdo: filtros + resultados -->
+    <div class="w-full lg:w-[480px] xl:w-[540px] flex flex-col border-r overflow-hidden" style="border-color:#e8ddd4">
+
+      <!-- Filtros -->
+      <div class="px-5 py-4 border-b space-y-3" style="border-color:#e8ddd4;background-color:#faf8f5">
+        <form method="GET" action="/search" class="space-y-3">
+          <div class="flex gap-2">
+            <div class="flex-1 flex items-center gap-2 bg-white border rounded-xl px-3 py-2.5" style="border-color:#D9C3A5">
+              <svg class="w-4 h-4 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0" />
+              </svg>
+              <input name="q" value={q} type="text" placeholder="Ciudad o nombre"
+                class="w-full text-sm outline-none placeholder:text-gray-400" />
+            </div>
+            <button type="submit"
+              class="px-4 py-2.5 rounded-xl text-white text-sm font-semibold hover:opacity-90 transition shrink-0"
+              style="background-color:#6D4C3D">
+              Buscar
+            </button>
+          </div>
+
+          <div class="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+            <a href={`/search?q=${q}`}
+               class={`shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold border transition ${!type ? 'text-white border-transparent' : 'border-gray-200 text-gray-600 hover:border-[#6D4C3D]'}`}
+               style={!type ? 'background-color:#6D4C3D' : ''}>
+              Todos
+            </a>
+            {Object.entries(unitTypeLabels).map(([val, label]) => (
+              <a href={`/search?q=${q}&type=${val}`}
+                 class={`shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold border transition ${type === val ? 'text-white border-transparent' : 'border-gray-200 text-gray-600 hover:border-[#6D4C3D]'}`}
+                 style={type === val ? 'background-color:#6D4C3D' : ''}>
+                {label}
+              </a>
+            ))}
+          </div>
+        </form>
+      </div>
+
+      <!-- Resultados -->
+      <div class="flex-1 overflow-y-auto px-4 py-4 space-y-3">
+        <p class="text-xs text-gray-400 font-medium px-1">
+          {results.length} resultado{results.length !== 1 ? 's' : ''}
+          {q && ` para "${q}"`}
+        </p>
+
+        {results.length === 0 ? (
+          <div class="text-center py-16">
+            <p class="text-4xl mb-3">🔍</p>
+            <p class="text-gray-500 text-sm">No encontramos campings con esos filtros.</p>
+            <a href="/search" class="text-sm font-medium mt-3 inline-block hover:underline" style="color:#6D4C3D">
+              Ver todos los campings
+            </a>
+          </div>
+        ) : results.map((c: any) => (
+          <a href={`/camping/${c.slug}`}
+             class="group flex gap-4 bg-white rounded-2xl border p-3 hover:shadow-md transition-shadow camping-card"
+             data-id={c.id}
+             style="border-color:#e8ddd4">
+            <div class="w-24 h-24 rounded-xl overflow-hidden shrink-0" style="background-color:#F4E8D4">
+              {c.coverUrl ? (
+                <img src={c.coverUrl} alt={c.name} class="w-full h-full object-cover" />
+              ) : (
+                <div class="w-full h-full flex items-center justify-center text-3xl opacity-40">⛺</div>
+              )}
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs text-gray-400 mb-0.5">{c.city}{c.city ? ', ' : ''}{c.country}</p>
+              <h3 class="font-semibold text-gray-900 text-sm leading-snug group-hover:text-[#6D4C3D] transition truncate">
+                {c.name}
+              </h3>
+              {c.rating && (
+                <p class="text-xs text-gray-500 mt-1">⭐ {c.rating} · {c.reviewCount} reseña{c.reviewCount !== 1 ? 's' : ''}</p>
+              )}
+              <p class="text-sm font-bold mt-1.5" style="color:#F27C38">
+                Desde ${Number(c.minPrice).toLocaleString('es-CL')}
+                <span class="text-xs font-normal text-gray-400"> /noche</span>
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Mapa -->
+    <div class="hidden lg:block flex-1 relative">
+      <div id="map" class="w-full h-full z-0"></div>
+    </div>
+  </div>
+</PublicLayout>
+
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script define:vars={{ mapPoints }}>
+  const map = L.map('map').setView([-35.675, -71.543], 5)
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors',
+    maxZoom: 18,
+  }).addTo(map)
+
+  const icon = L.divIcon({
+    className: '',
+    html: `<div style="background:#6D4C3D;color:white;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.25)">$</div>`,
+    iconAnchor: [20, 16],
+  })
+
+  mapPoints.forEach(point => {
+    const priceIcon = L.divIcon({
+      className: '',
+      html: `<div style="background:#6D4C3D;color:white;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.25);cursor:pointer">
+               $${Number(point.price).toLocaleString('es-CL')}
+             </div>`,
+      iconAnchor: [30, 16],
+    })
+
+    L.marker([point.lat, point.lng], { icon: priceIcon })
+      .addTo(map)
+      .bindPopup(`<strong>${point.name}</strong><br><a href="/camping/${point.slug}" style="color:#6D4C3D">Ver camping →</a>`)
+  })
+
+  // Highlight card on marker hover
+  document.querySelectorAll('.camping-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      card.style.borderColor = '#6D4C3D'
+    })
+    card.addEventListener('mouseleave', () => {
+      card.style.borderColor = '#e8ddd4'
+    })
+  })
+</script>
