@@ -43,27 +43,97 @@ const unitTypeLabel: Record<string, string> = {
   <main class="pt-16 max-w-7xl mx-auto px-4 sm:px-6 pb-20">
 
     <!-- Galería -->
-    <div class="my-6 grid grid-cols-4 grid-rows-2 gap-2 rounded-2xl overflow-hidden h-64 sm:h-96">
+    <div class="my-6 relative">
       {images.length === 0 ? (
-        <div class="col-span-4 row-span-2 flex items-center justify-center opacity-30" style="background-color:#F4E8D4"><img src="/favicon.png" alt="" class="w-20 h-20 object-contain" /></div>
+        <div class="rounded-2xl h-64 sm:h-96 flex items-center justify-center opacity-30" style="background-color:#F4E8D4">
+          <img src="/favicon.png" alt="" class="w-20 h-20 object-contain" />
+        </div>
       ) : (
-        <>
+        <div class="grid grid-cols-4 grid-rows-2 gap-2 rounded-2xl overflow-hidden h-64 sm:h-96">
+          <!-- Foto principal -->
           <div class="col-span-2 row-span-2 overflow-hidden">
             <img src={images[0]?.url} alt={camping.name}
-                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 cursor-pointer"
-                 id="open-gallery" />
+                 class="gallery-thumb w-full h-full object-cover hover:scale-105 transition-transform duration-500 cursor-pointer"
+                 data-index="0" />
           </div>
+          <!-- Fotos secundarias -->
           {images.slice(1, 5).map((img: any, i: number) => (
-            <div class="overflow-hidden" style={i === 1 || i === 3 ? 'position:relative' : ''}>
+            <div class="overflow-hidden relative">
               <img src={img.url} alt={`${camping.name} foto ${i + 2}`}
-                   class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 cursor-pointer" />
+                   class="gallery-thumb w-full h-full object-cover hover:scale-105 transition-transform duration-500 cursor-pointer"
+                   data-index={i + 1} />
+              <!-- Botón "Ver todas" sobre la última celda visible -->
+              {i === 3 && images.length > 5 && (
+                <button id="btn-ver-todas"
+                  class="absolute inset-0 flex items-end justify-end p-3 cursor-pointer"
+                  style="background:rgba(0,0,0,0.35)">
+                  <span class="bg-white text-gray-900 text-xs font-semibold px-3 py-1.5 rounded-lg shadow">
+                    Ver todas ({images.length})
+                  </span>
+                </button>
+              )}
             </div>
           ))}
-          {images.length < 5 && Array.from({ length: 4 - (images.length - 1) }).map(() => (
+          {images.length < 5 && Array.from({ length: 4 - Math.min(images.length - 1, 4) }).map(() => (
             <div style="background-color:#F4E8D4"></div>
           ))}
-        </>
+        </div>
       )}
+      <!-- Botón flotante "Ver todas" cuando hay > 1 foto y ≤ 5 (no se solapó con el overlay) -->
+      {images.length > 1 && images.length <= 5 && (
+        <button id="btn-ver-todas"
+          class="absolute bottom-3 right-3 bg-white text-gray-900 text-xs font-semibold px-3 py-1.5 rounded-lg shadow hover:shadow-md transition">
+          Ver todas ({images.length})
+        </button>
+      )}
+    </div>
+
+    <!-- Modal galería -->
+    <div id="gallery-modal"
+         class="fixed inset-0 z-50 hidden items-center justify-center"
+         style="background:rgba(0,0,0,0.92)">
+
+      <!-- Cerrar -->
+      <button id="modal-close"
+              class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full text-white hover:bg-white/20 transition"
+              aria-label="Cerrar">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+
+      <!-- Contador -->
+      <div id="modal-counter" class="absolute top-4 left-1/2 -translate-x-1/2 text-white/70 text-sm font-medium"></div>
+
+      <!-- Imagen -->
+      <div class="w-full h-full flex items-center justify-center px-14 sm:px-20 py-16">
+        <img id="modal-img" src="" alt=""
+             class="max-w-full max-h-full object-contain rounded-xl select-none"
+             draggable="false" />
+      </div>
+
+      <!-- Prev -->
+      <button id="modal-prev"
+              class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full text-white hover:bg-white/20 transition"
+              aria-label="Anterior">
+        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+
+      <!-- Next -->
+      <button id="modal-next"
+              class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full text-white hover:bg-white/20 transition"
+              aria-label="Siguiente">
+        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+
+      <!-- Thumbnails strip (solo desktop) -->
+      <div id="modal-strip"
+           class="absolute bottom-4 left-1/2 -translate-x-1/2 hidden sm:flex gap-2 max-w-lg overflow-x-auto px-2 pb-1">
+      </div>
     </div>
 
     <div class="grid lg:grid-cols-3 gap-10">
@@ -222,6 +292,87 @@ const unitTypeLabel: Record<string, string> = {
 
   <Footer />
 </PublicLayout>
+
+<script define:vars={{ galleryImages: images.map((i: any) => i.url) }}>
+  const modal   = document.getElementById('gallery-modal')
+  const modalImg = document.getElementById('modal-img')
+  const counter  = document.getElementById('modal-counter')
+  const strip    = document.getElementById('modal-strip')
+  const btnClose = document.getElementById('modal-close')
+  const btnPrev  = document.getElementById('modal-prev')
+  const btnNext  = document.getElementById('modal-next')
+  const btnVerTodas = document.getElementById('btn-ver-todas')
+
+  let current = 0
+  const total = galleryImages.length
+
+  function open(index) {
+    current = ((index % total) + total) % total
+    render()
+    modal.classList.remove('hidden')
+    modal.classList.add('flex')
+    document.body.style.overflow = 'hidden'
+  }
+
+  function close() {
+    modal.classList.add('hidden')
+    modal.classList.remove('flex')
+    document.body.style.overflow = ''
+  }
+
+  function render() {
+    modalImg.src = galleryImages[current]
+    counter.textContent = `${current + 1} / ${total}`
+    // Thumbnails strip
+    strip.innerHTML = ''
+    galleryImages.forEach((url, i) => {
+      const th = document.createElement('img')
+      th.src = url
+      th.alt = ''
+      th.className = 'h-14 w-20 object-cover rounded-lg cursor-pointer flex-shrink-0 transition ring-2 ' +
+        (i === current ? 'ring-white opacity-100' : 'ring-transparent opacity-50 hover:opacity-80')
+      th.addEventListener('click', () => open(i))
+      strip.appendChild(th)
+    })
+    // Scroll activo al centro
+    const active = strip.children[current]
+    if (active) active.scrollIntoView({ inline: 'center', behavior: 'smooth', block: 'nearest' })
+    // Ocultar flechas si solo hay 1
+    btnPrev.style.display = total <= 1 ? 'none' : ''
+    btnNext.style.display = total <= 1 ? 'none' : ''
+  }
+
+  // Abrir desde thumbs del grid
+  document.querySelectorAll('.gallery-thumb').forEach(img => {
+    img.addEventListener('click', () => open(Number(img.dataset.index)))
+  })
+
+  // Botón "Ver todas"
+  if (btnVerTodas) btnVerTodas.addEventListener('click', () => open(0))
+
+  btnClose?.addEventListener('click', close)
+  btnPrev?.addEventListener('click', () => open(current - 1))
+  btnNext?.addEventListener('click', () => open(current + 1))
+
+  // Teclado
+  document.addEventListener('keydown', e => {
+    if (modal.classList.contains('hidden')) return
+    if (e.key === 'Escape')      close()
+    if (e.key === 'ArrowLeft')   open(current - 1)
+    if (e.key === 'ArrowRight')  open(current + 1)
+  })
+
+  // Cerrar al click en backdrop
+  modal.addEventListener('click', e => { if (e.target === modal) close() })
+
+  // Swipe touch para mobile
+  let touchStartX = 0
+  modal.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX }, { passive: true })
+  modal.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX
+    if (Math.abs(dx) > 50) dx < 0 ? open(current + 1) : open(current - 1)
+  }, { passive: true })
+</script>
 
 {camping.lat && camping.lng && (
   <>
