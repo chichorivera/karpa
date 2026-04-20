@@ -1,43 +1,52 @@
-# Astro Starter Kit: Minimal
+# Karpa — El marketplace de campings en Chile
 
-```sh
-npm create astro@latest -- --template minimal
-```
+**Karpa** conecta a viajeros que buscan escapadas en la naturaleza con dueños de campings, glamping, cabañas y sitios para camper en todo Chile.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+🌐 **[karpamvp.netlify.app](https://karpamvp.netlify.app)**
 
-## 🚀 Project Structure
+---
 
-Inside of your Astro project, you'll see the following folders and files:
+## ¿Qué es Karpa?
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+Karpa es la plataforma donde encontrar y reservar el camping perfecto es tan fácil como reservar un hotel. Para los dueños de campings, es la vitrina digital que les falta para llegar a miles de viajeros sin intermediarios.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Pensada 100% para Chile: precios en pesos, pago con Webpay, y campings desde Arica hasta la Patagonia.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+---
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Para viajeros
 
-## 🧞 Commands
+- Busca campings por ciudad, nombre o tipo de alojamiento
+- Ve fotos, descripción, reseñas y ubicación en el mapa
+- Reserva y paga en minutos con Webpay Plus
+- Gestiona tus reservas y deja reseñas desde tu panel
+- Contacta directamente al dueño del camping
 
-All commands are run from the root of the project, from a terminal:
+## Para dueños de camping
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- Publica tu camping en minutos: fotos, descripción, reglas y ubicación
+- Crea múltiples tipos de alojamiento: sitios para carpas, cabañas, glamping y sitios para camper
+- Gestiona tus reservas y ve tus ingresos en tiempo real
+- Define precios especiales por temporada o fechas puntuales
+- Conversa directamente con tus huéspedes
 
-## 👀 Want to learn more?
+---
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Tipos de alojamiento
+
+| Tipo | Descripción |
+|------|-------------|
+| 🏕️ Sitio (carpa) | Espacios para armar carpa propia |
+| 🏠 Cabaña | Alojamiento con techo y paredes |
+| ✨ Glamping | Experiencia de lujo en la naturaleza |
+| 🚐 Camper | Sitios con conexiones para casas rodantes |
+
+---
+
+## Stack
+
+Astro 5 · Supabase · Tailwind CSS v4 · Netlify · Webpay Plus · Leaflet/OpenStreetMap
+
+---
+
+*Karpa — Naturaleza al alcance de todos.*
