@@ -119,7 +119,6 @@
 <!-- PORTADA -->
 <div class="cover">
   <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:24px">
-    <img src="https://karpamvp.netlify.app/favicon.png" alt="" style="height:40px;width:40px;object-fit:contain" />
     <img src="https://karpamvp.netlify.app/logo-karpa-blanco.png" alt="Karpa" class="logo" style="margin-bottom:0" />
   </div>
   <p class="subtitle">Tutorial completo de la plataforma — MVP v1.0</p>
@@ -139,6 +138,7 @@
       <li><a href="#pagos">Sistema de pagos</a></li>
       <li><a href="#usuarios">Usuarios creados</a></li>
       <li><a href="#tech">Stack tecnológico</a></li>
+      <li><a href="#fase3">Funcionalidades Fase 3</a></li>
     </ol>
   </div>
 </div>
@@ -599,6 +599,82 @@
   <div class="warning">
     <strong>⚠️ Entorno de producción pendiente:</strong> Se deben configurar las 8 variables de entorno en Netlify y las URLs de autenticación en Supabase antes de usar en producción real. Ver documentación de deploy en el repositorio.
   </div>
+</section>
+
+<!-- 9. FASE 3 -->
+<section id="fase3">
+  <h2 class="section-title">9. Funcionalidades Fase 3</h2>
+
+  <h3>📸 Fotos de perfil con recorte</h3>
+  <div class="card">
+    <p>Tanto viajeros como hosts pueden subir una foto de perfil desde <code>/app/profile</code> o <code>/host/profile</code>. Al seleccionar una imagen aparece una <strong>modal de recorte</strong> que permite:</p>
+    <ul style="margin:8px 0 0">
+      <li>Arrastrar la imagen para reencuadrar</li>
+      <li>Hacer zoom con el slider, la rueda del ratón o pellizcando en móvil</li>
+      <li>Confirmar el recorte cuadrado (400×400 px, JPEG)</li>
+    </ul>
+    <p style="margin-top:8px">La foto se guarda en el bucket <strong>avatars</strong> de Supabase Storage y se actualiza en tiempo real en el perfil.</p>
+  </div>
+
+  <h3>🖼️ Galería de fotos del camping</h3>
+  <div class="card">
+    <p>Desde la ficha de edición del camping (<code>/host/campings/[id]</code>) el host puede:</p>
+    <ul style="margin:8px 0 0">
+      <li>Subir múltiples fotos a la vez mediante drag-and-drop o selección</li>
+      <li>Elegir cuál foto es la <strong>portada</strong> (aparece primero en la galería y en los listados)</li>
+      <li>Eliminar fotos individualmente</li>
+    </ul>
+    <p style="margin-top:8px">Las imágenes se almacenan en el bucket <strong>camping-images</strong> de Supabase Storage. En el detalle público del camping, la galería soporta navegación con flechas, teclado y swipe táctil.</p>
+  </div>
+
+  <h3>💬 Mensajería entre viajero y host</h3>
+  <div class="card">
+    <p>Los viajeros pueden iniciar una conversación con el host directamente desde el detalle del camping usando el botón <em>Contactar al host</em>. Cada par viajero–camping tiene una sola conversación (se reutiliza si ya existe).</p>
+    <ul style="margin:8px 0 0">
+      <li><strong>Viajero:</strong> accede a sus conversaciones en <code>/app/messages</code></li>
+      <li><strong>Host:</strong> accede a sus conversaciones en <code>/host/messages</code></li>
+      <li>Los mensajes se envían con Enter (Shift+Enter para nueva línea)</li>
+    </ul>
+  </div>
+
+  <h3>🗺️ Mapa interactivo de búsqueda</h3>
+  <div class="card">
+    <p>La página de búsqueda (<code>/search</code>) muestra un mapa de Chile a la derecha (solo en desktop) con <strong>marcadores de precio</strong> por cada camping. Al hacer clic en un marcador aparece un popup con:</p>
+    <ul style="margin:8px 0 0">
+      <li>Foto de portada del camping</li>
+      <li>Nombre y precio desde</li>
+      <li>Botón "Ver camping →"</li>
+    </ul>
+    <p style="margin-top:8px">El detalle de cada camping también muestra un mapa pequeño en el sidebar con la ubicación exacta.</p>
+  </div>
+
+  <h3>📍 Coordenadas GPS del camping</h3>
+  <div class="card">
+    <p>Al crear o editar un camping, el host puede definir la ubicación exacta en la sección <em>Coordenadas</em>. Tiene tres formas de hacerlo:</p>
+    <ul style="margin:8px 0 0">
+      <li>Hacer clic directamente en el mapa interactivo</li>
+      <li>Ingresar manualmente los valores de Latitud y Longitud</li>
+      <li>Usar el botón <em>Buscar ciudad en mapa</em> que geocodifica la ciudad ingresada usando OpenStreetMap (sin API key)</li>
+    </ul>
+    <p style="margin-top:8px">Solo los campings con coordenadas aparecen en el mapa de búsqueda.</p>
+  </div>
+
+  <h3>💰 Precios especiales por fechas</h3>
+  <div class="card">
+    <p>Desde el panel de cada camping (<em>Precios especiales →</em>), el host puede definir rangos de precio por fecha para cada unidad de alojamiento. Útil para temporada alta, fines de semana largos, etc.</p>
+    <ul style="margin:8px 0 0">
+      <li>Se elige la unidad, rango de fechas, precio por noche y una etiqueta opcional (ej: "Temporada alta")</li>
+      <li>Los precios especiales se superponen al precio base de la unidad</li>
+      <li>Se pueden eliminar individualmente</li>
+    </ul>
+  </div>
+
+  <h3>✏️ Edición de unidades de alojamiento</h3>
+  <div class="card">
+    <p>Desde <code>/host/campings/[id]/units</code> ahora es posible <strong>editar</strong> cualquier unidad existente, no solo crearlas o activar/desactivar. Se puede modificar nombre, tipo, capacidad, precio, descripción y amenidades.</p>
+    <p style="margin:0">Los tipos de unidad disponibles son: <strong>Sitio</strong> (carpa), <strong>Cabaña</strong>, <strong>Glamping</strong>, <strong>Camper</strong> y Otro.</p>
+  </div>
+
 </section>
 
 </div>
