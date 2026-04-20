@@ -147,6 +147,10 @@ const unitTypeLabels: Record<string, string> = {
     </div>
   </div>
 
+  <style is:inline>
+    .karpa-popup .leaflet-popup-content-wrapper { padding: 0; overflow: hidden; border-radius: 12px; }
+    .karpa-popup .leaflet-popup-content { margin: 0; width: 220px !important; }
+  </style>
   <script type="application/json" id="map-data" set:html={JSON.stringify(mapPoints)}></script>
 
 <script is:inline>
@@ -168,12 +172,12 @@ const unitTypeLabels: Record<string, string> = {
     })
 
     const imgHtml = point.coverUrl
-      ? `<img src="${point.coverUrl}" style="width:100%;height:110px;object-fit:cover;display:block;border-radius:8px 8px 0 0;margin:-14px -20px 10px;width:calc(100% + 40px)" />`
+      ? `<img src="${point.coverUrl}" style="width:100%;height:120px;object-fit:cover;display:block" />`
       : ''
 
     const popup = L.popup({ maxWidth: 220, className: 'karpa-popup' }).setContent(
-      `${imgHtml}<div style="padding:${point.coverUrl ? '0' : '0'} 0 2px">
-        <p style="font-weight:700;font-size:14px;color:#1a1a1a;margin:0 0 2px">${point.name}</p>
+      `${imgHtml}<div style="padding:10px 12px 12px">
+        <p style="font-weight:700;font-size:13px;color:#1a1a1a;margin:0 0 2px">${point.name}</p>
         <p style="font-size:13px;color:#F27C38;font-weight:700;margin:0 0 8px">Desde ${price} <span style="font-weight:400;color:#9ca3af;font-size:11px">/noche</span></p>
         <a href="/camping/${point.slug}" style="display:block;text-align:center;background:#6D4C3D;color:white;padding:7px 0;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none">Ver camping →</a>
       </div>`
