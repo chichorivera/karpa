@@ -415,8 +415,6 @@ const unitTypeLabel: Record<string, string> = {
 
   {camping.lat && camping.lng && (
     <>
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
       <script type="application/json" id="camping-map-data" set:html={JSON.stringify({ lat: camping.lat, lng: camping.lng, name: camping.name })}></script>
       <script is:inline>
         const { lat, lng, name } = JSON.parse(document.getElementById('camping-map-data').textContent)

@@ -177,7 +177,7 @@ const { data: images } = await supabaseAdmin
       </div>
 
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+      <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
       <script type="application/json" id="camping-coords" set:html={JSON.stringify({ lat: camping.lat, lng: camping.lng })}></script>
       <script is:inline>
         const coords = JSON.parse(document.getElementById('camping-coords').textContent)
